@@ -1,0 +1,1199 @@
+{
+    "topics": [
+      {
+        "userId": "63b15184daae2f5af31faa71",
+        "name": "Typescript",
+        "exercises": [
+            {
+                "exerciseId": 1,
+                "name": "Functions",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            }, 
+            {
+                "exerciseId": 2,
+                "name": "Classes",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            },
+            {
+                "exerciseId": 3,
+                "name": "Variables",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            },
+            {
+                "exerciseId": 4,
+                "name": "Basic Syntax",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            },
+            {
+                "exerciseId": 5,
+                "name": "Higher Level Functions",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            },
+            {
+                "exerciseId": 6,
+                "name": "Newly Added Questions",
+                "questions": [
+                    
+                ]
+            }
+        ]
+      },
+      {
+        "userId": "63b15184daae2f5af31faa71",
+        "name": "Javascript",
+        "exercises": [
+            {
+                "exerciseId": 1,
+                "name": "Functions",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            }, 
+            {
+                "exerciseId": 2,
+                "name": "Classes",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            },
+            {
+                "exerciseId": 3,
+                "name": "Variables",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            },
+            {
+                "exerciseId": 4,
+                "name": "Basic Syntax",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            },
+            {
+                "exerciseId": 5,
+                "name": "Higher Level Functions",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            }
+        ]
+      },
+      {
+        "userId": "63b15184daae2f5af31faa71",
+        "name": "Solidity",
+        "exercises": [
+            {
+                "exerciseId": 1,
+                "name": "Functions",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            }, 
+            {
+                "exerciseId": 2,
+                "name": "Classes",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            },
+            {
+                "exerciseId": 3,
+                "name": "Variables",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            },
+            {
+                "exerciseId": 4,
+                "name": "Basic Syntax",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            },
+            {
+                "exerciseId": 5,
+                "name": "Higher Level Functions",
+                "questions": [
+                    {
+                        "questionId": 1,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 2,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 3,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 4,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 5,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 6,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    },
+                    {
+                        "questionId": 7,
+                        "question": "In the following code, 'Mark' is a string. What is name (answer with 1 word)?",
+                        "code": "var name = \"Mark\";",
+                        "answer": "variable"
+                    },
+                    {
+                        "questionId": 8,
+                        "question": "In one word, if it is enclosed in quotation marks, what is it?",
+                        "code": "const xhttp = new XMLHttpRequest()\r\n\r\nxhttp.onreadystatechange = function() {\r\n  if (this.readyState == 4 && this.status == 200) {\r\n    const data = JSON.parse(this.responseText)\r\n    \/\/ handle the response that is saved in variable data\r\n  }\r\n}\r\n\r\nxhttp.open('GET', '\/data.json', true)\r\nxhttp.send()",
+                        "answer": "string"
+                    },
+                    {
+                        "questionId": 9,
+                        "question": "What is the keyword that declares a variable?",
+                        "code": "HTTPRequest request = new HTTPRequest();\r\n\r\nString url = \"https:\/\/fullstack-exampleapp.herokuapp.com\/data.json\";\r\nList<Note> notes = request.get(url);\r\n\r\nnotes.forEach(m => {\r\n  System.out.println(m.content);\r\n});",
+                        "answer": "var"
+                    },
+                    {
+                        "questionId": 10,
+                        "question": "This statement...\nuserName = \"buddy5000\";\n...is correct only if the variable has already been _______.",
+                        "code": "import axios from 'axios'\r\n\r\nconst promise = axios.get('http:\/\/localhost:3001\/notes')\r\nconsole.log(promise)\r\n\r\nconst promise2 = axios.get('http:\/\/localhost:3001\/foobar')\r\nconsole.log(promise2)",
+                        "answer": "declared"
+                    },
+                    {
+                        "questionId": 11,
+                        "question": "In a single statement, declare the variable nickname and assign the string \"Satchmo\" to it.",
+                        "code": "  useEffect(() => {\r\n    console.log('effect')\r\n    axios\r\n      .get('http:\/\/localhost:3001\/notes')\r\n      .then(response => {\r\n        console.log('promise fulfilled')\r\n        setNotes(response.data)\r\n      })\r\n  }, [])\r\n  console.log('render', notes.length, 'notes')\r\n",
+                        "answer": "var nickname = \"Satchmo\";"
+                    },
+                    {
+                        "questionId": 12,
+                        "question": "Declare the variable teamName.",
+                        "code": "import App from '.\/App'\r\n\r\naxios.get('http:\/\/localhost:3001\/notes').then(response => {\r\n  const notes = response.data\r\n  ReactDOM.createRoot(document.getElementById('root')).render(<App notes={notes} \/>)\r\n})",
+                        "answer": "var teamName;"
+                    }
+                ]
+            }
+        ]
+      } 
+    ]
+  }
