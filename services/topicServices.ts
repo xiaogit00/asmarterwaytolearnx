@@ -2,9 +2,9 @@
 
 import axios from "axios"
 
+const baseUrl = process.env.NEXT_PUBLIC_API_URL 
 
 const addTopic = async (topic: string, userId: string) => {
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL 
     try {
         const res = await axios.post(baseUrl + '/topics', {
             name: topic,
@@ -16,6 +16,24 @@ const addTopic = async (topic: string, userId: string) => {
     }
 }
 
+const deleteTopic = async (topicId: string) => {
+    try {
+        const res = await axios.delete(baseUrl + `/topics/${topicId}`)
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+const updateTopicName = async (topicId: string, topicName: string) => {
+    try {
+        const res = await axios.put(baseUrl + `/topics/${topicId}`, { name: topicName })
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 export {
-    addTopic
+    addTopic, 
+    deleteTopic,
+    updateTopicName
 }

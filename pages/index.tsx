@@ -11,15 +11,17 @@ import axios from 'axios'
 import { useContext } from 'react'
 import { TopicsContext } from '../contexts/TopicsContext'
 import { Topic } from '../types/topics'
+import { useTopicStore } from '../store'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  const topicsData: Topic[] | null = useContext(TopicsContext)
+
+  const topicsData = useTopicStore(state => state.topics)
 
   return (
     <MainLayout title="A Smarter Way to Learn X">
-      {topicsData ? (<TopicList topics={topicsData}/>) : <EmptyContainer topic/>}
+      {topicsData.length > 0 ? (<TopicList topics={topicsData}/>) : <EmptyContainer topic/>}
     </MainLayout>
   )
 }

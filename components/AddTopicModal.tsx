@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { FlagOutlined, CloseOutlined } from '@ant-design/icons'
 import { Input, Form, Button } from 'antd'
 import { addTopic } from '../services/topicServices'
+import { useTopicStore } from '../store'
 
 
 const AddTopicModal = ( { setIsModalOpen }: {setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>}): JSX.Element => {
+  const addTopicToStore = useTopicStore(state => state.addTopic)
   const [ newTopicName, setNewTopicName ] = useState<string>('')
   const handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
     const value = (e.target as HTMLInputElement).value
@@ -15,8 +17,9 @@ const AddTopicModal = ( { setIsModalOpen }: {setIsModalOpen: React.Dispatch<Reac
   const handleSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault
     const res = await addTopic(newTopicName, "63b15184daae2f5af31faa71")
-    console.log(res)
+    addTopicToStore(res)
     setNewTopicName('')
+    setIsModalOpen(false)
   }
 
     return (

@@ -21,6 +21,7 @@
     "csvtojson": "^2.0.10",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
+    "immer": "^9.0.17",
     "mongoose": "^6.8.2",
     "next": "13.0.7",
     "node-mocks-http": "^1.12.1",
