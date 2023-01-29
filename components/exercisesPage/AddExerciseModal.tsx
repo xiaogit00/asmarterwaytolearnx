@@ -1,27 +1,24 @@
 import React, { useState } from 'react'
 import { FlagOutlined, CloseOutlined } from '@ant-design/icons'
 import { Input, Form, Button } from 'antd'
-import { addTopic } from '../services/topicServices'
-import { useTopicStore } from '../store'
+import { addExercise } from '../../services/exerciseService'
+import { useTopicStore } from '../../store'
 
 
-const AddTopicModal = ( { setIsModalOpen }: {setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>}): JSX.Element => {
-  const addTopicToStore = useTopicStore(state => state.addTopic)
-  const [ newTopicName, setNewTopicName ] = useState<string>('')
-  const handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const value = (e.target as HTMLInputElement).value
-    setNewTopicName(value)
-    console.log(value)
-  }
-  
+const AddExerciseModal = ( { setIsModalOpen, topicId }: {setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>, topicId: string}): JSX.Element => {
+  const [ newExerciseName, setNewExerciseName ] = useState<string>('')
+
+  const addExerciseToStore = useTopicStore(state => state.addExercise)
+  const topics = useTopicStore(state => state.topics)
+
   const handleSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault
-    const res = await addTopic(newTopicName, "63b15184daae2f5af31faa71")
-    addTopicToStore(res)
-    setNewTopicName('')
+    console.log("topicId",topicId)
+    const res = await addExercise(topicId, newExerciseName)
+    addExerciseToStore(topicId, res)
+    setNewExerciseName('')
     setIsModalOpen(false)
   }
-
     return (
         <>
           <div
@@ -42,17 +39,17 @@ const AddTopicModal = ( { setIsModalOpen }: {setIsModalOpen: React.Dispatch<Reac
                 </div>
                 {/*body*/}
                 <div className="relative p-6 pb-0 flex-auto">
-                  <h1 className="font-sans text-xl font-semibold">Create a topic</h1>
-                  <p className="text-gray-500 pt-2 pb-4"> A topic is a general field of study. For instance, if you’re learning Typescript, the topic will be Typescript. <br></br><br></br>Once you create a topic, you’ll be able to add exercises to them.</p>
+                  <h1 className="font-sans text-xl font-semibold">Create an Exercise</h1>
+                  <p className="text-gray-500 pt-2 pb-4"> Please enter a name for this exercise. </p>
                     <Form
                         layout="vertical"
                         onFinish={handleSubmit}
                         >
-                        <Form.Item label="Topic name">
+                        <Form.Item label="Exercise name">
                             <Input 
-                              placeholder="e.g. Typescript" 
-                              value={newTopicName}
-                              onChange={handleInputChange}
+                              placeholder="e.g. Functions" 
+                              value={newExerciseName}
+                              onChange={(e) => setNewExerciseName(e.target.value) }
                             />
                         </Form.Item>
                         <div className="flex items-center justify-between p-6 pt-1 rounded-b">
@@ -60,7 +57,6 @@ const AddTopicModal = ( { setIsModalOpen }: {setIsModalOpen: React.Dispatch<Reac
                           <Form.Item >
                             <Button htmlType="submit" size={'large'} block type="primary" style={{backgroundColor: "#7F56D9"}}> Confirm</Button>
                           </Form.Item>
-                          
                         </div>
                     </Form>
                 </div>
@@ -74,4 +70,4 @@ const AddTopicModal = ( { setIsModalOpen }: {setIsModalOpen: React.Dispatch<Reac
     )
 }
 
-export default AddTopicModal
+export default AddExerciseModal

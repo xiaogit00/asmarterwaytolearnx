@@ -1,38 +1,20 @@
 import { Divider, Steps } from 'antd';
 
-const ProgressBar = (): JSX.Element => {
+const ProgressBar = ({ numOfQns, current }: {numOfQns: number, current: number}): JSX.Element => {
+  //I'll need to construct an array which looks like:
+  const numberings = []
+  for ( var i = 1; i <= numOfQns; i++) {
+    numberings.push({title: i})
+  }
     return (
-      <div className='w-3/4'>
+      <div className='w-3/4 text-center'>
         <Steps
-      progressDot
-      current={1}
-      size="small"
-      items={[
-        {
-          title: '1'
-        },
-        {
-          title: '2'
-        },
-        {
-          title: '3'
-        },
-        {
-            title: '4'
-        },
-        {
-            title: '5'
-        },
-        {
-            title: '6'
-        },
-        {
-            title: '7'
-        },
-        {
-            title: '8'
-        },
-      ]}
+          type="inline"
+          progressDot
+          current={current}
+          
+          items={numberings}
+          responsive
     />
     </div>
     )

@@ -3,25 +3,31 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 const Topic = require('../../../models/topic')
 import { NewTopic, Topic as TopicType } from '../../../types/topics'
 import { toNewTopic } from '../../../utils/typeguards'
-const mongoose = require('mongoose')
-import { addTopic } from '../../../services/questionService'
+import mongooseConnect from '../../../lib/mongooseConnect'
+import { getToken } from 'next-auth/jwt'
+
 
 export default async function topicHandler(req: NextApiRequest, res: NextApiResponse) {
-  const url = 'mongodb://127.0.0.1:27017/flashcards'
-  mongoose.set('strictQuery', false);
-  await mongoose.connect(url, { useNewUrlParser: true })
-
-  if (req.method === 'POST') {
-    const newTopic: NewTopic = toNewTopic(req.body)
-    const topic = new Topic(newTopic)
-    const addedTopic = await topic.save()
-    console.log("topic:",topic)
-    res.status(200).json(addedTopic)
-
+  
+  await mongooseConnect()
+  const secret = process.env.SECRET
+  const token = await getToken({req, secret})
+  if (token) {
+    if (req.method === 'POST') { // Post a single Topic
+      const newTopic: NewTopic = toNewTopic(req.body)
+      const topic = new Topic(newTopic)
+      const addedTopic = await topic.save()
+      console.log("topic:",topic)
+      res.status(200).json(addedTopic)
+  
+    } else if (req.method === 'GET') { // Get all topics
+      const topics = await Topic.find({userId: token.id})
+      res.status(200).json(topics)
+    }
   } else {
-    const topics = await Topic.find()
-    res.status(200).json(topics)
+    res.status(401).end()
   }
+  
   
 }
 

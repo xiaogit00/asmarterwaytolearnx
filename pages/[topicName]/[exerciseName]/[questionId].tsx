@@ -11,40 +11,56 @@ import { openNotification, filterExerciseQuestions } from './exercisePageHelpers
 import Answer from '../../../components/Answer';
 import QuestionText from '../../../components/QuestionText';
 import { TopicsContext } from '../../../contexts/TopicsContext';
-import { Question, Topic } from '../../../types/topics';
+// import { Question, Topic } from '../../../types/topics';
 import { RouterQueryString } from '../../../types/router';
+import { useTopicStore } from '../../../store';
 
 const Question = () => {
 
     const [ answer, setAnswer ] = useState<string>('')
     const [ correct, setCorrect ] = useState< null | boolean >(null)
+    const [ numCorrect, setNumCorrect ] = useState<number>(0)
     const [api, contextHolder] = notification.useNotification();
+
+
     const router = useRouter()
     const exerciseName: RouterQueryString = router.query.exerciseName
     const topicName: RouterQueryString = router.query.topicName
     const questionNumber: RouterQueryString = router.query.questionId
-    const topicsData: Topic[] | null = useContext(TopicsContext)
-    const exerciseQuestions: Question[] | undefined = filterExerciseQuestions(topicsData, topicName, exerciseName)
+  
+    const questionNumberMinusOne = Number(questionNumber) - 1
+    
+    const topics = useTopicStore(state => state.topics)
+    const exerciseQuestions = filterExerciseQuestions(topics, topicName, exerciseName)
+    
 
     const handleAnswerSubmit = () => {
-      if (exerciseQuestions && answer === exerciseQuestions[Number(questionNumber)].answer) {
+      if (exerciseQuestions && answer === exerciseQuestions[questionNumberMinusOne].answer) {
         openNotification(api, exerciseName, topicName, questionNumber)
         setCorrect(true)
+        setNumCorrect(numCorrect + 1)
+        setAnswer('')
+        // console.log("numCorrect",numCorrect)
       } else {
         setCorrect(false)
       }
     }
 
     if (exerciseQuestions) {
+      const maxQuestions = exerciseQuestions.length
+      const lastQuestion = questionNumberMinusOne + 1 === maxQuestions
+      // console.log("maxQuestions", maxQuestions)
+      // console.log("questionNumber", questionNumber)
+      // console.log("lastQuestion", lastQuestion)
       return (
         <MainLayout>
             {contextHolder}
             <div className='flex flex-col items-center justify-between gap-y-16 pb-32'>
-                <ProgressBar />
-                <QuestionText text={exerciseQuestions[Number(questionNumber)].question}/>
+                <ProgressBar numOfQns={exerciseQuestions.length} current={questionNumberMinusOne}/>
+                <QuestionText text={exerciseQuestions[questionNumberMinusOne].question}/>
 
                 <SyntaxHighlighter language="javascript" style={atomOneDark}>
-                    {exerciseQuestions[Number(questionNumber)].code}
+                    {exerciseQuestions[questionNumberMinusOne].code}
                 </SyntaxHighlighter>
 
                 <Input 
@@ -59,7 +75,20 @@ const Question = () => {
                 </Button>
                 
                 {/* Display answers if incorrect */}
-                {correct === false ? <Answer text={exerciseQuestions[Number(questionNumber)].answer} exerciseName={exerciseName} topicName={topicName} questionNumber={questionNumber}/> : null}
+                {correct === false ? 
+                  <Answer 
+                    text={exerciseQuestions[questionNumberMinusOne].answer} 
+                    exerciseName={exerciseName} 
+                    topicName={topicName} 
+                    questionNumber={questionNumber}
+                    setCorrect={setCorrect}
+                    setAnswer={setAnswer}
+                    numCorrect={numCorrect}
+                    lastQuestion={lastQuestion}
+                    maxQuestions={maxQuestions}
+                  /> 
+                
+                : null}
             </div>
         </MainLayout>
     )

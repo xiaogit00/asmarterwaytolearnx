@@ -2,19 +2,20 @@ import MainLayout from '../../../layouts/MainLayout'
 import { useRouter } from 'next/router'
 import ExerciseLandingPage from '../../../components/ExerciseLanding'
 import { useTopicStore } from '../../../store'
+import { withRouter } from 'next/router'
 
 
-const Exercise = () => {
+const Summary = () => {
   const router = useRouter()
   const exerciseName = router.query.exerciseName
   return (
       <MainLayout>
-          <ExerciseLandingPage exerciseName={exerciseName}/>
+          <p>End of Exercise. You got: {router.query.numCorrect}/{router.query.maxQuestions} correct</p>
       </MainLayout>
   )
 
   }
 
-export default Exercise
+export default withRouter(Summary)
 
 

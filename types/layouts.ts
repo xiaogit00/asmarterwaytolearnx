@@ -5,5 +5,6 @@ export interface MainLayoutProps {
 
 export interface EmptyContainerProps {
     topic?: boolean,
-    exercise?: boolean
+    exercise?: boolean,
+    topicId: string
 }

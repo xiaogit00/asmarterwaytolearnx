@@ -5,12 +5,8 @@ import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import { MenuOutlined } from '@ant-design/icons'
 import EmptyContainer from '../components/EmptyContainer'
-import TopicList from '../components/TopicList'
+import TopicList from '../components/topicsPage/TopicList'
 import MainLayout from '../layouts/MainLayout'
-import axios from 'axios'
-import { useContext } from 'react'
-import { TopicsContext } from '../contexts/TopicsContext'
-import { Topic } from '../types/topics'
 import { useTopicStore } from '../store'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,7 +17,7 @@ export default function Home() {
 
   return (
     <MainLayout title="A Smarter Way to Learn X">
-      {topicsData.length > 0 ? (<TopicList topics={topicsData}/>) : <EmptyContainer topic/>}
+      {topicsData.length > 0 ? (<TopicList/>) : <EmptyContainer topic/>}
     </MainLayout>
   )
 }

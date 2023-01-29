@@ -10,7 +10,7 @@ const openNotification = (api, exerciseName, topicName, questionNumber) => {
     const btn = (
       <Space>
         <Button onClick={() => {
-          api.destroy(key)
+          api.destroy()
           Router.push(`/${topicName}/${exerciseName}/${Number(questionNumber) + 1}`)
         }}>
           Ok
@@ -21,13 +21,13 @@ const openNotification = (api, exerciseName, topicName, questionNumber) => {
       message: "Correct Answer",
       placement: 'top',
       btn,
-      duration: 0,
+      duration: 10,
       icon: <CheckOutlined />
     });
 };
 
 const filterExerciseQuestions = (topicsData: Topic[] | null, topicName: RouterQueryString, exerciseName: RouterQueryString): Question[] | undefined => {
-  if (topicsData && exerciseName && topicName) {
+  if (topicsData && topicsData.length > 0 && exerciseName && topicName) {
     const topicData = topicsData.filter(topic => topic.name === topicName)
     const exerciseData = topicData[0].exercises.filter(exercise => exercise.name === exerciseName)
     return exerciseData[0].questions

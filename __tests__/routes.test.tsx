@@ -5,7 +5,9 @@ import questionHandler from '../pages/api/topics/[topicId]/exercise/[exerciseId]
 import singleQuestionHandler from '../pages/api/topics/[topicId]/exercise/[exerciseId]/[questionId]'
 const data = require('../db.json')
 const Topic = require('../models/topic')
+const User = require('../models/user')
 const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken')
 
 beforeEach(async () => {
   const url = 'mongodb://127.0.0.1:27017/flashcards'
@@ -13,14 +15,16 @@ beforeEach(async () => {
   await mongoose.connect(url, { useNewUrlParser: true })
   await Topic.deleteMany({})
   await Topic.insertMany(data.topics)
-
+  await User.deleteMany({})
+  await User.insertMany(data.users)
 })
 
 describe('Topic Routes', () => {
 
+  
   it('GET: api/topics succeeds [All Topics]', async () => {
     const { req, res } = createMocks({
-      method: 'GET'
+      method: 'GET', 
     })
     await topicHandler(req, res)
     expect(JSON.parse(res._getData())).toHaveLength(3)

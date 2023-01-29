@@ -6,11 +6,11 @@ const Topic = require('../../../../../../models/topic')
 const Exercise = require('../../../../../../models/exercise')
 import { Topic as TopicType, Question, Exercise } from "../../../../../../types/topics"
 import { parseName, toQuestion, toExistingQuestion } from "../../../../../../utils/typeguards"
+import mongooseConnect from '../../../../../../lib/mongooseConnect'
+import { getToken } from 'next-auth/jwt'
 
 export default async function singleQuestionHandler(req: NextApiRequest, res: NextApiResponse) {
-    const url = 'mongodb://127.0.0.1:27017/flashcards'
-    mongoose.set('strictQuery', false);
-    await mongoose.connect(url, { useNewUrlParser: true })
+    await mongooseConnect()
 
     const { topicId, exerciseId, questionId } = req.query
     
@@ -18,39 +18,44 @@ export default async function singleQuestionHandler(req: NextApiRequest, res: Ne
 
     const exercise = topicData[0].exercises.filter(exercise => exercise._id == exerciseId)
     // console.log(topicData[0].exercises.filter(exercise => console.log(exercise._id==exerciseId)))
-    
-    if (req.method === 'DELETE') {
-        //Delete Single Question
-        const newQuestionsData = exercise[0].questions.filter(question => question._id != questionId)
-        const newExerciseData: Exercise = {
-            ...exercise[0].toObject(), 
-            questions: newQuestionsData
-        }
-        const newTopic: TopicType = {
-            ...topicData[0].toObject(),
-            exercises: newExerciseData
-        }
+    const secret = process.env.SECRET
+    const token = await getToken({req, secret})
+    if (token) {
+        if (req.method === 'DELETE') { //Delete Single Question
+            
+            const newQuestionsData = exercise[0].questions.filter(question => question._id != questionId)
+            const newExerciseData: Exercise = {
+                ...exercise[0].toObject(), 
+                questions: newQuestionsData
+            }
+            const newTopic: TopicType = {
+                ...topicData[0].toObject(),
+                exercises: newExerciseData
+            }
 
-        await Topic.findOneAndUpdate({_id: topicId}, newTopic)
-        console.log(`Question ${questionId} successfully deleted`)
-        res.status(204).end()
+            await Topic.findOneAndUpdate({_id: topicId}, newTopic)
+            console.log(`Question ${questionId} successfully deleted`)
+            res.status(204).end()
 
-    } else if (req.method === 'PUT') {
-        const newQuestion: Question = toExistingQuestion(req.body)
-        const newExerciseData = {
-            ...exercise[0].toObject(), 
-            questions: [
-                ...exercise[0].questions,
-                newQuestion
-            ]
-        }
-        const newTopic: TopicType = {
-            ...topicData[0].toObject(),
-            exercises: newExerciseData
-        }
+        } else if (req.method === 'PUT') { //Change Single Question
+            const newQuestion: Question = toExistingQuestion(req.body)
+            const newExerciseData = {
+                ...exercise[0].toObject(), 
+                questions: [
+                    ...exercise[0].questions,
+                    newQuestion
+                ]
+            }
+            const newTopic: TopicType = {
+                ...topicData[0].toObject(),
+                exercises: newExerciseData
+            }
 
-        await Topic.findOneAndUpdate({_id: topicId}, newTopic)
-        console.log(`Question ${newQuestion.id} successfully updated`)
-        res.status(204).json(newQuestion)
+            await Topic.findOneAndUpdate({_id: topicId}, newTopic)
+            console.log(`Question ${newQuestion.id} successfully updated`)
+            res.status(204).json(newQuestion)
+        }
+    } else {
+        res.status(401).end()
     }
 }

@@ -4,22 +4,22 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Topic } from '../types/topics'
 import { useTopicStore } from '../store'
+import { SessionProvider } from "next-auth/react"
 
 
-export default function App({ Component, pageProps }: AppProps) {
-  const topicsData = useTopicStore((state) => state.topics)
-  const setTopicsData = useTopicStore((state) => state.setTopics)
-
-  const topicsURL: string = 'http://localhost:3000/api/topics'
+export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const fetchTopics = useTopicStore((state) => state.fetchTopics)
+  // const topicsURL: string = 'http://localhost:3000/api/topics'
   
 
   useEffect( () => {
-    axios.get<Topic[]>(topicsURL)
-      .then(res => setTopicsData(res.data))
-  }, [setTopicsData])
+    fetchTopics()
+  }, [fetchTopics])
 
 
   return (
+    <SessionProvider session={session}>
       <Component {...pageProps} />
-  )
-}
+    </SessionProvider>
+      
+  )}

@@ -1,7 +1,7 @@
 {
     "topics": [
       {
-        "userId": "63b15184daae2f5af31faa71",
+        "userId": "63d23ae1b1c88a4c75283e12",
         "name": "Typescript",
         "exercises": [
             {
@@ -404,7 +404,7 @@
         ]
       },
       {
-        "userId": "63b15184daae2f5af31faa71",
+        "userId": "63d23ae1b1c88a4c75283e13",
         "name": "Javascript",
         "exercises": [
             {
@@ -800,7 +800,7 @@
         ]
       },
       {
-        "userId": "63b15184daae2f5af31faa71",
+        "userId": "63d23ae1b1c88a4c75283e14",
         "name": "Solidity",
         "exercises": [
             {
@@ -1195,5 +1195,19 @@
             }
         ]
       } 
+    ],
+    "users": [
+        {
+            "_id": "63d23ae1b1c88a4c75283e12",
+            "email": "leibingguo@gmail.com"
+        },
+        {
+            "_id": "63d23ae1b1c88a4c75283e13",
+            "email": "djlanjiaobin@gmail.com"
+        },
+        {
+            "_id": "63d23ae1b1c88a4c75283e14",
+            "email": "musingsondefi@gmail.com"
+        }
     ]
-  }
+}

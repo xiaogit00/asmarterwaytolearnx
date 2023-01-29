@@ -106,7 +106,20 @@ a {
 }
 
 .ant-btn:hover {
-  background-color: rgb(199 210 254);
+  /* background-color: rgb(199 210 254);   */
   color: white;
   border-color: rgb(47, 85, 240);
+}
+
+.ant-steps.ant-steps-inline .ant-steps-item-container {
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+/* .ant-steps.ant-steps-inline .ant-steps-item-finish .ant-steps-item-container .ant-steps-item-content .ant-steps-item-title {
+  color: black;
+} */
+
+.ant-steps.ant-steps-inline .ant-steps-item-title {
+  font-size: 24px;
 }
