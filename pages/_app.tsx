@@ -9,7 +9,6 @@ import { SessionProvider } from "next-auth/react"
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const fetchTopics = useTopicStore((state) => state.fetchTopics)
-  // const topicsURL: string = 'http://localhost:3000/api/topics'
   
 
   useEffect( () => {
