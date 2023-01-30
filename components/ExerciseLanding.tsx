@@ -24,7 +24,7 @@ const ExerciseLandingPage = ({ exerciseName }: {exerciseName : string | string[]
     } else {
         return (
             <>
-                <p>There's no questions in this exercise. Pls upload some questions.</p>
+                <p>There are no questions in this exercise. Pls upload some questions.</p>
             </>
             
         )
