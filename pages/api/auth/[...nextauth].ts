@@ -19,7 +19,7 @@ const authOptions: NextAuthOptions = {
           })
     ],
     adapter: MongoDBAdapter(clientPromise, {
-      databaseName: 'flashcards'
+      databaseName: 'asmarterwaytolearnx'
     }),
     callbacks: {
       async session({ session}) {
