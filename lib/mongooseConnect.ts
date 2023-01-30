@@ -1,7 +1,9 @@
+import { genPreviewOperationsStyle } from "antd/es/image/style";
+
 const mongoose = require('mongoose')
 
 const mongooseConnect = async () => {
-    const url = 'mongodb://127.0.0.1:27017/flashcards'
+    const url = process.env.MONGODB_URI + process.env.MONGODB_DBNAME
     mongoose.set('strictQuery', false);
     await mongoose.connect(url, { useNewUrlParser: true })
 }
