@@ -34,6 +34,6 @@ export interface ExerciseNameProps {
     setActivatedExerciseId: React.Dispatch<React.SetStateAction<string | null>>
 }
 
-export type NewTopic = Omit<Topic, 'id'>
+export type NewTopic = Omit<Topic, '_id' | 'toObject'>
 
-export type NewExercise = Omit<Exercise, 'id'>
+export type NewExercise = Omit<Exercise, '_id'>

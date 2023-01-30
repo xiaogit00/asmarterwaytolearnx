@@ -57,6 +57,7 @@ export const toQuestion = (body: any): Question => {
 
 export const toExistingQuestion = (body: any): Question => {
     const newQuestion: Question = {
+        _id: parseString(body._id),
         question: parseString(body.question),
         code: parseString(body.code),
         answer: parseString(body.answer)
@@ -67,8 +68,9 @@ export const toExistingQuestion = (body: any): Question => {
 
 export const toQuestions = (body: any) : Question[] => {
     const newQuestions: Question[] = []
-    body.map(item => {
+    body.map((item: Question) => {
         const newQuestion = {
+            _id: mongoose.Types.ObjectId(),
             question: parseString(item.question),
             code: parseString(item.code),
             answer: parseString(item.answer)

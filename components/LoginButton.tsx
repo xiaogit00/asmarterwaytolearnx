@@ -7,7 +7,10 @@ const LoginButton = (): JSX.Element => {
   if (session) {
     return (
       <>
-        Signed in as {session.user.email}
+        {session.user && session.user.email
+        ? 'Signed in as ' + session.user.email
+        : ''
+        }
         <button onClick={() => signOut()}>Sign out</button>
       </>
     )

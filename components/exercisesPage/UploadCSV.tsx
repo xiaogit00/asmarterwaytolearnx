@@ -13,13 +13,13 @@ const UploadCSV = ({ exercise, topicId }: { exercise: Exercise, topicId: string}
     const fileReader = new FileReader();
 
     const props = {
-        onRemove: (file) => {
+        onRemove: (file: any) => {
             const index = fileList.indexOf(file);
             const newFileList = fileList.slice();
             newFileList.splice(index, 1);
             setFileList(newFileList);
         },
-        beforeUpload: (file) => {
+        beforeUpload: (file: any) => {
             setFileList([...fileList, file]);
             return false;
         },
@@ -46,7 +46,7 @@ const UploadCSV = ({ exercise, topicId }: { exercise: Exercise, topicId: string}
                     })
             };
 
-            fileReader.readAsText(fileList[0]);
+            // fileReader.readAsText(fileList[0]);
             
         }
     }
@@ -70,7 +70,7 @@ const UploadCSV = ({ exercise, topicId }: { exercise: Exercise, topicId: string}
             </Upload>
 
             {fileList.length>0 ? (<Button
-                        onClick={(e) => {
+                        onClick={(e: any) => {
                             handleOnSubmit(e, exercise.name);
                         }}
                         loading={uploading}

@@ -1,8 +1,15 @@
 import React from 'react'
 import { Input as InputButton } from 'antd' 
 
+interface AnswerInputProps {
+    placeholder: string,
+    value: string,
+    onChange: (e: React.FormEvent<HTMLInputElement>) => void,
+    onPressEnter: () => void
 
-const Input = ( { placeholder, value, onChange, onPressEnter } ) => {
+}
+
+const AnswerInput = ( { placeholder, value, onChange, onPressEnter }: AnswerInputProps ) => {
     return (
         <>
         <InputButton 
@@ -16,4 +23,5 @@ const Input = ( { placeholder, value, onChange, onPressEnter } ) => {
     )
 }
 
-export default Input
+export default AnswerInput
+

@@ -4,7 +4,7 @@ export interface AnswerProps {
     text: string,
     exerciseName: RouterQueryString,
     topicName: RouterQueryString,
-    questionNumber: RouterQueryString
+    questionNumber: number,
     setCorrect: React.Dispatch<React.SetStateAction<boolean | null>>
     setAnswer: React.Dispatch<React.SetStateAction<string>>,
     numCorrect: number,

@@ -3,7 +3,7 @@
 import type { NextApiRequest, NextApiResponse } from "next"
 const mongoose = require('mongoose')
 const Topic = require('../../../../../../models/topic')
-const Exercise = require('../../../../../../models/exercise')
+// const Exercise = require('../../../../../../models/exercise')
 import { Topic as TopicType, Question, Exercise } from "../../../../../../types/topics"
 import { parseName, toQuestion, toExistingQuestion } from "../../../../../../utils/typeguards"
 import mongooseConnect from '../../../../../../lib/mongooseConnect'
@@ -16,14 +16,14 @@ export default async function singleQuestionHandler(req: NextApiRequest, res: Ne
     
     const topicData = await Topic.find({_id: topicId})
 
-    const exercise = topicData[0].exercises.filter(exercise => exercise._id == exerciseId)
+    const exercise = topicData[0].exercises.filter((exercise: Exercise) => exercise._id == exerciseId)
     // console.log(topicData[0].exercises.filter(exercise => console.log(exercise._id==exerciseId)))
     const secret = process.env.SECRET
     const token = await getToken({req, secret})
     if (token) {
         if (req.method === 'DELETE') { //Delete Single Question
             
-            const newQuestionsData = exercise[0].questions.filter(question => question._id != questionId)
+            const newQuestionsData = exercise[0].questions.filter((question: Question) => question._id != questionId)
             const newExerciseData: Exercise = {
                 ...exercise[0].toObject(), 
                 questions: newQuestionsData
@@ -52,7 +52,7 @@ export default async function singleQuestionHandler(req: NextApiRequest, res: Ne
             }
 
             await Topic.findOneAndUpdate({_id: topicId}, newTopic)
-            console.log(`Question ${newQuestion.id} successfully updated`)
+            console.log(`Question ${newQuestion._id} successfully updated`)
             res.status(204).json(newQuestion)
         }
     } else {

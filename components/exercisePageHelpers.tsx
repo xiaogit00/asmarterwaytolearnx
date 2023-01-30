@@ -1,11 +1,12 @@
 import { Button, Space } from 'antd'
 import { CheckOutlined} from '@ant-design/icons';
 import Router from 'next/router';
-import { Question } from '../../../types/topics';
-import { Topic } from '../../../types/topics';
-import { RouterQueryString } from '../../../types/router';
+import { Question } from '../types/topics';
+import { Topic } from '../types/topics';
+import { RouterQueryString } from '../types/router';
+import { NotificationInstance } from 'antd/es/notification/interface';
 
-const openNotification = (api, exerciseName, topicName, questionNumber) => {
+const openNotification = (api: NotificationInstance, exerciseName: RouterQueryString, topicName: RouterQueryString, questionNumber: number) => {
     const key = `open${Date.now()}`;
     const btn = (
       <Space>

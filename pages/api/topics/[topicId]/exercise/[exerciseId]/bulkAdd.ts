@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     const topicData = await Topic.find({_id: topicId})
     // console.log(topicData[0].exercises)
-    const exercise = topicData[0].exercises.find(exercise => exercise._id == exerciseId)
+    const exercise = topicData[0].exercises.find((exercise: Exercise) => exercise._id == exerciseId)
     const secret = process.env.SECRET
     const token = await getToken({req, secret})
     if (token) {
@@ -27,8 +27,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 ...exercise.toObject(), 
                 questions: newQuestions
             }
-            const exerciseList = produce(topicData[0].exercises, draft => {
-                const exerciseIndex = topicData[0].exercises.findIndex(exercise => exercise._id == exerciseId)
+            const exerciseList = produce(topicData[0].exercises, (draft: any) => {
+                const exerciseIndex = topicData[0].exercises.findIndex((exercise: Exercise) => exercise._id == exerciseId)
                 // console.log(exerciseIndex)
                 draft[exerciseIndex] = newExerciseData
             })

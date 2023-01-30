@@ -1,17 +1,14 @@
 import { useRouter } from 'next/router'
-import React, { useState, useContext, SyntheticEvent } from 'react'
+import React, { useState } from 'react'
 import ProgressBar from '../../../components/ProgressBar'
 import MainLayout from '../../../layouts/MainLayout'
-import { questions } from '../../../data/topics';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import Input from '../../../components/Input';
-import { Button, Space, notification } from 'antd'
-import { openNotification, filterExerciseQuestions } from './exercisePageHelpers';
+import AnswerInput from '../../../components/AnswerInput';
+import { Button, notification } from 'antd'
+import { openNotification, filterExerciseQuestions } from '../../../components/exercisePageHelpers';
 import Answer from '../../../components/Answer';
 import QuestionText from '../../../components/QuestionText';
-import { TopicsContext } from '../../../contexts/TopicsContext';
-// import { Question, Topic } from '../../../types/topics';
 import { RouterQueryString } from '../../../types/router';
 import { useTopicStore } from '../../../store';
 
@@ -26,9 +23,9 @@ const Question = () => {
     const router = useRouter()
     const exerciseName: RouterQueryString = router.query.exerciseName
     const topicName: RouterQueryString = router.query.topicName
-    const questionNumber: RouterQueryString = router.query.questionId
+    const questionNumber: number = Number(router.query.questionId)
   
-    const questionNumberMinusOne = Number(questionNumber) - 1
+    const questionNumberMinusOne: number = questionNumber - 1
     
     const topics = useTopicStore(state => state.topics)
     const exerciseQuestions = filterExerciseQuestions(topics, topicName, exerciseName)
@@ -40,7 +37,6 @@ const Question = () => {
         setCorrect(true)
         setNumCorrect(numCorrect + 1)
         setAnswer('')
-        // console.log("numCorrect",numCorrect)
       } else {
         setCorrect(false)
       }
@@ -49,9 +45,7 @@ const Question = () => {
     if (exerciseQuestions) {
       const maxQuestions = exerciseQuestions.length
       const lastQuestion = questionNumberMinusOne + 1 === maxQuestions
-      // console.log("maxQuestions", maxQuestions)
-      // console.log("questionNumber", questionNumber)
-      // console.log("lastQuestion", lastQuestion)
+
       return (
         <MainLayout>
             {contextHolder}
@@ -63,7 +57,7 @@ const Question = () => {
                     {exerciseQuestions[questionNumberMinusOne].code}
                 </SyntaxHighlighter>
 
-                <Input 
+                <AnswerInput 
                 placeholder={'Enter Your Answer'}
                 value={answer}
                 onChange={(e: React.FormEvent<HTMLInputElement>) => {setAnswer(e.currentTarget.value)}}

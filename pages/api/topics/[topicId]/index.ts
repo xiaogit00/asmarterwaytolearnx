@@ -15,7 +15,7 @@ export default async function exerciseHandler(req: NextApiRequest, res: NextApiR
 
     const { topicId } = req.query
     
-    const targetTopic: TopicType[] = await Topic.find({_id: topicId})
+    const topicData = await Topic.find({_id: topicId})
 
     const secret = process.env.SECRET
     const token = await getToken({req, secret})
@@ -26,7 +26,7 @@ export default async function exerciseHandler(req: NextApiRequest, res: NextApiR
             console.log(`Topic: ${topicId} successfully deleted`)
             res.status(204).end()
         } else if (req.method === 'GET') {
-            res.status(200).json(targetTopic[0].exercises)
+            res.status(200).json(topicData[0].exercises)
         } else if (req.method === 'PUT') {
             const topicName = parseName(req.body.name)
             await Topic.updateOne({_id: topicId}, {name: topicName})
@@ -36,9 +36,9 @@ export default async function exerciseHandler(req: NextApiRequest, res: NextApiR
         } else if (req.method === 'POST') {
             const newExercise: Exercise = toExercise(req.body)
             const newTopic: TopicType = {
-                ...targetTopic[0].toObject(),
+                ...topicData[0].toObject(),
                 exercises: [
-                    ...targetTopic[0].exercises,
+                    ...topicData[0].exercises,
                     newExercise
                 ]
             }

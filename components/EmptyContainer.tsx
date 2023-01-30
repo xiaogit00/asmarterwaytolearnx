@@ -35,7 +35,7 @@ const EmptyContainer = ( { topic, exercise, topicId }: EmptyContainerProps): JSX
                 {isModalOpen ? <AddTopicModal setIsModalOpen={ setIsModalOpen }/> : null}
             </div>
             )
-    } else if (exercise) {
+    } else if (exercise && topicId) {
         return (
             <div className='container mx-auto flex flex-col items-center bg-white rounded-md w-3/4 py-64'>
                 <Empty description={'No Exercises'} style={{fontSize:"2em", fontWeight:"500", marginBottom:"8px"}}/>

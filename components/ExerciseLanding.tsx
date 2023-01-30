@@ -2,7 +2,7 @@ import { Button } from 'antd'
 import { useRouter } from 'next/router'
 import { RouterQueryString } from '../types/router';
 import { useTopicStore } from '../store';
-import { filterExerciseQuestions } from '../pages/[topicName]/[exerciseName]/exercisePageHelpers';
+import { filterExerciseQuestions } from './exercisePageHelpers';
 
 const ExerciseLandingPage = ({ exerciseName }: {exerciseName : string | string[] | undefined}): JSX.Element => {
     const router = useRouter()

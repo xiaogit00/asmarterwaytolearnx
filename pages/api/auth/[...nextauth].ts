@@ -22,21 +22,11 @@ const authOptions: NextAuthOptions = {
       databaseName: 'flashcards'
     }),
     callbacks: {
-      async session({ session, token, user }) {
-        session.user.id = token.id;
-        session.accessToken = token.accessToken;
-        return session;
+      async session({ session}) {
+        return session
       },
-      async jwt({ token, user, account, profile, isNewUser }) {
-        console.log("TOken within JWC callback is: ", token)
-        if (user) {
-          token.id = user.id;
-        }
-        if (account) {
-          token.accessToken = account.access_token;
-        }
-        
-        return token;
+      async jwt({ token }) {
+        return token
       },
     },
     secret: process.env.SECRET

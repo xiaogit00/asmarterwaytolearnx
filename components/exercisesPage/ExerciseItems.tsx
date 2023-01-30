@@ -5,7 +5,7 @@ import UploadCSV from "./UploadCSV"
 import { Exercise } from "../../types/topics"
 import { useState } from 'react'
 
-const ExerciseItems = ({ exercises, topicId }: { exercises: Exercise[], topicId: string}): JSX.Element => {
+const ExerciseItems = ({ exercises, topicId }: { exercises: Exercise[], topicId: string}): JSX.Element | null => {
     const [ activatedExerciseId, setActivatedExerciseId ] = useState<null | string>(null)
 
     if (exercises.length > 0) {
@@ -27,6 +27,9 @@ const ExerciseItems = ({ exercises, topicId }: { exercises: Exercise[], topicId:
                 })}
             </div>
         )
+    }
+    else {
+        return null
     }
     
 }

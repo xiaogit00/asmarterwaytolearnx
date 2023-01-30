@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next"
 const mongoose = require('mongoose')
 const Topic = require('../../../../../../models/topic')
 const Exercise = require('../../../../../../models/exercise')
-import { Topic as TopicType, Question } from "../../../../../../types/topics"
+import { Topic as TopicType, Question, Exercise } from "../../../../../../types/topics"
 import { parseName, toQuestion } from "../../../../../../utils/typeguards"
 import { getToken } from 'next-auth/jwt'
 import mongooseConnect from '../../../../../../lib/mongooseConnect'
@@ -16,7 +16,7 @@ export default async function questionHandler(req: NextApiRequest, res: NextApiR
     
     const topicData = await Topic.find({_id: topicId})
 
-    const questions = topicData[0].exercises.filter(exercise => exercise._id == exerciseId)
+    const questions = topicData[0].exercises.filter((exercise: Exercise) => exercise._id == exerciseId)
     // console.log(topicData[0].exercises.filter(exercise => console.log(exercise._id==exerciseId)))
     const secret = process.env.SECRET
     const token = await getToken({req, secret})
@@ -28,7 +28,7 @@ export default async function questionHandler(req: NextApiRequest, res: NextApiR
         } else if (req.method === 'DELETE') { //Deleting an exercise 
             
 
-            const newExerciseData = topicData[0].exercises.filter(exercise => exercise._id != exerciseId)
+            const newExerciseData = topicData[0].exercises.filter((exercise: Exercise) => exercise._id != exerciseId)
             // console.log(newExerciseData)
             const newTopic: TopicType = {
                 ...topicData[0].toObject(),

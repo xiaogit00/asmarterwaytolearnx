@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { MenuOutlined } from '@ant-design/icons'
 import { MainLayoutProps } from '../types/layouts'
-import { signIn } from 'next-auth/react'
-import LoginButton from '../components/loginButton'
+import LoginButton from '../components/LoginButton'
 import Link from 'next/link'
 
 export default function MainLayout( { title, children }: MainLayoutProps): JSX.Element {
