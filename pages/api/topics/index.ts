@@ -12,6 +12,7 @@ export default async function topicHandler(req: NextApiRequest, res: NextApiResp
   await mongooseConnect()
   const secret = process.env.SECRET
   const token = await getToken({req, secret})
+  console.log(token)
   if (token) {
     if (req.method === 'POST') { // Post a single Topic
       const newTopic: NewTopic = toNewTopic(req.body)

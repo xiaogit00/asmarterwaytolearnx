@@ -10,7 +10,7 @@ const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 
 beforeEach(async () => {
-  const url = 'mongodb://127.0.0.1:27017/flashcards'
+  const url = 'mongodb://127.0.0.1:27017/asmarterwaytolearnx'
   mongoose.set('strictQuery', false);
   await mongoose.connect(url, { useNewUrlParser: true })
   await Topic.deleteMany({})
@@ -22,9 +22,9 @@ beforeEach(async () => {
 describe('Topic Routes', () => {
 
   
-  it('GET: api/topics succeeds [All Topics]', async () => {
+  it.only('GET: api/topics succeeds [All Topics]', async () => {
     const { req, res } = createMocks({
-      method: 'GET', 
+      method: 'GET'
     })
     await topicHandler(req, res)
     expect(JSON.parse(res._getData())).toHaveLength(3)

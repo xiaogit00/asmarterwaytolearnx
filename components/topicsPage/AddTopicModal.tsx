@@ -3,6 +3,7 @@ import { FlagOutlined, CloseOutlined } from '@ant-design/icons'
 import { Input, Form, Button } from 'antd'
 import { addTopic } from '../../services/topicServices'
 import { useTopicStore } from '../../store'
+import { useSession } from 'next-auth/react'
 
 
 const AddTopicModal = ( { setIsModalOpen }: {setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>}): JSX.Element => {
@@ -13,13 +14,17 @@ const AddTopicModal = ( { setIsModalOpen }: {setIsModalOpen: React.Dispatch<Reac
     setNewTopicName(value)
     console.log(value)
   }
+  const {data: session } = useSession()
   
   const handleSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault
-    const res = await addTopic(newTopicName, "63b15184daae2f5af31faa71")
-    addTopicToStore(res)
-    setNewTopicName('')
-    setIsModalOpen(false)
+    if (session && session.user) {
+      const res = await addTopic(newTopicName, String(session.user.id))
+      addTopicToStore(res)
+      setNewTopicName('')
+      setIsModalOpen(false)
+    }
+    
   }
 
     return (

@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_ENV=development next dev",
     "build": "next build",
-    "start": "next start",
-    "test": "jest --watch",
+    "start": "NODE_ENV=production next start",
+    "test": "NODE_ENV=test jest --watch",
     "test:ci": "jest --ci",
     "lint": "next lint"
   },
@@ -21,6 +21,7 @@
     "axios": "^1.2.2",
     "bcryptjs": "^2.4.3",
     "csvtojson": "^2.0.10",
+    "dotenv": "^16.0.3",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
     "immer": "^9.0.17",
