@@ -22,10 +22,17 @@ const authOptions: NextAuthOptions = {
       databaseName: 'asmarterwaytolearnx'
     }),
     callbacks: {
-      async session({ session}) {
+      async session({ session, token }) {
+        if (session.user && session.user.id) {
+          session.user.id = token.id;
+        }
+        
         return session
       },
-      async jwt({ token }) {
+      async jwt({ token, user }) { 
+        if (user) {
+          token.id = user.id;
+        }
         return token
       },
     },

@@ -9,7 +9,7 @@ import { useSession, signIn } from 'next-auth/react'
 const EmptyContainer = ( { topic, exercise, topicId }: EmptyContainerProps): JSX.Element | null => {
     const [ isModalOpen, setIsModalOpen ] = useState<boolean>(false)
     const { data: session } = useSession()
-    console.log("session:",session)
+    // console.log("session:",session)
     const showModal = () => {
         setIsModalOpen(true)
     }

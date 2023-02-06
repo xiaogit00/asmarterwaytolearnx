@@ -22,6 +22,7 @@ export default async function topicHandler(req: NextApiRequest, res: NextApiResp
   
     } else if (req.method === 'GET') { // Get all topics
       const topics = await Topic.find({userId: token.id})
+      console.log("token.id",token.id)
       res.status(200).json(topics)
     }
   } else {

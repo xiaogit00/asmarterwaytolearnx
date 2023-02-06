@@ -12,6 +12,7 @@ const TopicName = () => {
     const router = useRouter()
     const { topicName } = router.query
     const topicsData = useTopicStore(state => state.topics)
+    
 
     if (topicName && topicsData.length > 0) {
         const exercises: Exercise[] = topicsData.filter(topic => topic.name === topicName)[0].exercises

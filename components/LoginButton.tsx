@@ -2,7 +2,7 @@ import { useSession, signIn, signOut } from "next-auth/react"
 
 const LoginButton = (): JSX.Element => {
   const { data: session } = useSession()
-  console.log("Session:", session)
+  // console.log("Session:", session)
 
   if (session) {
     return (

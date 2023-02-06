@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
 
   const topicsData = useTopicStore(state => state.topics)
-
+  console.log("Topics:", topicsData)
   return (
     <MainLayout title="A Smarter Way to Learn X">
       {topicsData.length > 0 ? (<TopicList/>) : <EmptyContainer topic/>}
