@@ -19,7 +19,7 @@ const authOptions: NextAuthOptions = {
           })
     ],
     adapter: MongoDBAdapter(clientPromise, {
-      databaseName: 'asmarterwaytolearnx'
+      databaseName: process.env.NODE_ENV === "production" ? 'asmarterwaytolearnx' : 'asmarterwaytolearnx_test'
     }),
     callbacks: {
       async session({ session, token }) {

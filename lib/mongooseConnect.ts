@@ -1,5 +1,3 @@
-import { genPreviewOperationsStyle } from "antd/es/image/style";
-
 const mongoose = require('mongoose')
 
 const mongooseConnect = async () => {

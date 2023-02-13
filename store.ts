@@ -4,9 +4,12 @@ import { topics } from './data/topics'
 import { Topic } from './types/topics'
 import { Exercise } from './types/topics'
 import { deleteExercise } from './services/exerciseService'
+import { persist, createJSONStorage } from 'zustand/middleware'
 
 interface TopicState {
   topics: Topic[],
+  selectedTopicId: string,
+  setSelectedTopicId: (topicId: string) => void,
   fetchTopics: () => void,
   addTopic: (topicData: any) => void,
   deleteTopic: (topicId: string) => void,
@@ -18,6 +21,8 @@ interface TopicState {
 
 const useTopicStore = create<TopicState>((set) => ({
     topics: [],
+    selectedTopicId: '',
+    setSelectedTopicId: (topicId: string) => set({selectedTopicId: topicId}),
     fetchTopics: async () => {
       const res = await fetch(process.env.NEXT_PUBLIC_API_URL+'/topics')
       if (res.status === 200) {
@@ -78,5 +83,23 @@ const useTopicStore = create<TopicState>((set) => ({
       )
   }))
 
+  interface TopicIdState {
+    topicId: string,
+    setTopicId: (topicId: string) => void
+  }
 
-  export { useTopicStore }
+ const useTopicIdStore = create<TopicIdState>()(
+    persist(
+      (set, get) => ({
+        topicId: '',
+        setTopicId: (topicId: string) => set({ topicId: topicId }),
+      }),
+      {
+        name: 'selectedTopicId', // name of item in the storage (must be unique)
+        storage: createJSONStorage(() => sessionStorage) // (optional) by default the 'localStorage' is used
+      }
+    )
+  )
+
+
+  export { useTopicStore, useTopicIdStore }

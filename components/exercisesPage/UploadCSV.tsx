@@ -7,7 +7,7 @@ import { Button, message, Upload } from 'antd';
 import type { UploadFile } from 'antd/es/upload/interface';
 
 const UploadCSV = ({ exercise, topicId }: { exercise: Exercise, topicId: string}) => {
-    const [fileList, setFileList] = useState<UploadFile[]>([]);
+    const [fileList, setFileList] = useState<Blob[]>([]);
     const [uploading, setUploading] = useState(false);
     
     const fileReader = new FileReader();
@@ -30,9 +30,12 @@ const UploadCSV = ({ exercise, topicId }: { exercise: Exercise, topicId: string}
     const handleOnSubmit = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, exerciseName: string) => {
         e.preventDefault();
         const exerciseId: string = exercise._id
+        console.log(exerciseId)
         if (fileList.length > 0) {
+            console.log(fileList[0])
             fileReader.onload = function (event: ProgressEvent<FileReader>) {
                 const csvOutput = event.target?.result;
+                console.log("thisis reached")
                 csv()
                     .fromString(csvOutput)
                     .then((questions: Question[]) => {
@@ -46,7 +49,7 @@ const UploadCSV = ({ exercise, topicId }: { exercise: Exercise, topicId: string}
                     })
             };
 
-            // fileReader.readAsText(fileList[0]);
+            fileReader.readAsText(fileList[0]);
             
         }
     }

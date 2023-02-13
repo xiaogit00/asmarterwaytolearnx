@@ -10,7 +10,7 @@ const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 
 beforeEach(async () => {
-  const url = 'mongodb://127.0.0.1:27017/asmarterwaytolearnx'
+  const url = 'mongodb+srv://fullstack:futurebrownie99@cluster0.21jon.mongodb.net/asmarterwaytolearnx_test?retryWrites=true&w=majority'
   mongoose.set('strictQuery', false);
   await mongoose.connect(url, { useNewUrlParser: true })
   await Topic.deleteMany({})
@@ -228,7 +228,7 @@ describe('Question Routes', () => {
     expect(questionsAtStart.length - questionsAtEnd.length).toBe(1)
   })
 
-  it('PUT: api/topics/{topicId}/exercise/{exerciseId}/{questionId} successfully updates question', async () => {
+  it.only('PUT: api/topics/{topicId}/exercise/{exerciseId}/{questionId} successfully updates question', async () => {
     const solidityTopic = await Topic.find({name: 'Solidity'})
     const topicId = solidityTopic[0]._id.toString()
     const exerciseId = solidityTopic[0].exercises[0]._id.toString()
@@ -241,7 +241,8 @@ describe('Question Routes', () => {
         questionId
       }, 
       body: {
-        question: "What is the name of Sam?",
+        _id: questionId,
+        question: "What is the name of Sam321312?",
         code: "var Sam = name;",
         answer: "Sam"
       }
