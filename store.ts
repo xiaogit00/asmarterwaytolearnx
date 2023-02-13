@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import produce from 'immer'
 import { topics } from './data/topics'
-import { Topic } from './types/topics'
+import { Topic, Question } from './types/topics'
 import { Exercise } from './types/topics'
 import { deleteExercise } from './services/exerciseService'
 import { persist, createJSONStorage } from 'zustand/middleware'
@@ -16,7 +16,8 @@ interface TopicState {
   updateTopicName: (topicId: string, topicName: string) => void,
   addExercise: (topicId:string, exerciseData: any) => void,
   deleteExercise: (topicId:string, exerciseId: string) => void,
-  updateExercise: (topicId: string, exerciseId: string, exerciseName: string) => void
+  updateExercise: (topicId: string, exerciseId: string, exerciseName: string) => void,
+  bulkAddQuestions: (topicId: string, exerciseId: string, questions: Question[]) => void
 }
 
 const useTopicStore = create<TopicState>((set) => ({
@@ -80,7 +81,16 @@ const useTopicStore = create<TopicState>((set) => ({
           const exercise = topic.exercises.find((exercise: Exercise) => exercise._id === exerciseId)
           exercise.name = exerciseName
         })
-      )
+      ),
+      bulkAddQuestions: (topicId: string, exerciseId: string, questions: Question[]) => {
+        set(
+          produce((draft) => {
+            const topic = draft.topics.find((topic: Topic) => topic._id === topicId)
+            const exercise = topic.exercises.find((exercise: Exercise) => exercise._id === exerciseId)
+            exercise.questions = questions
+          })
+        )
+      }
   }))
 
   interface TopicIdState {

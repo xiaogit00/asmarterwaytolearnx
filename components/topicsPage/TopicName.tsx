@@ -4,6 +4,7 @@ import { useTopicStore, useTopicIdStore } from "../../store"
 import { updateTopicName } from "../../services/topicServices"
 import Router from "next/router"
 import { TopicNameProps } from '../../types/topics'
+import Link from 'next/link'
 
 const TopicName = ({topic, i, activatedTopicId, setActivatedTopicId}: TopicNameProps) => {
 
@@ -19,11 +20,10 @@ const TopicName = ({topic, i, activatedTopicId, setActivatedTopicId}: TopicNameP
 
     const handleSelectTopic = () => {
         setTopicId(topic._id)
-        Router.push(`./${topicName}`)
     }
     
     if (activatedTopicId !== topic._id) {
-        return <a href='javascript:;' onClick={handleSelectTopic}>{i + 1}. {topic.name}</a>
+        return  <Link onClick={handleSelectTopic} href={`./${topic.name}`}>{i + 1}. {topic.name}</Link>
     } else {
         return (
             <Input 

@@ -8,7 +8,6 @@ import { useTopicStore } from '../../store'
 const TopicList = () => {
     
     const [ isModalOpen, setIsModalOpen ] = useState<boolean>(false)
-    const topics = useTopicStore(state => state.topics)
 
     return (
         <div className='container mx-auto flex flex-col bg-white rounded-md w-3/4 py-16 px-32'>

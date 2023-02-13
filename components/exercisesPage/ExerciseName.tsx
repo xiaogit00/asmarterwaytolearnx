@@ -4,6 +4,7 @@ import { useRouter } from "next/router"
 import { Input } from "antd"
 import { updateExercise } from "../../services/exerciseService"
 import { useTopicStore } from "../../store"
+import Link from 'next/link'
 
 const ExerciseName = ( { exercise,topicId, i, activatedExerciseId, setActivatedExerciseId}: ExerciseNameProps): JSX.Element => {
     const [ exerciseName, setExerciseName ] = useState<string>(exercise.name)
@@ -18,7 +19,7 @@ const ExerciseName = ( { exercise,topicId, i, activatedExerciseId, setActivatedE
     }
     
     if (activatedExerciseId !== exercise._id) {
-        return <h2 className="text-4xl font-semibold">{i + 1}. <a href={topicName + '/' + exercise.name}>{exercise.name}</a></h2>
+        return <h2 className="text-4xl font-semibold">{i + 1}. <Link href={topicName + '/' + exercise.name}>{exercise.name}</Link></h2>
     } else {
         return (
             <Input 

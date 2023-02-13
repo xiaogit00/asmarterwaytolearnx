@@ -2,11 +2,19 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from "next-auth/react"
 import MainLayout from '../layouts/MainLayout'
-import { useTopicStore } from '../store'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { useTopicStore, useTopicIdStore } from '../store'
 
 
-export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+
+export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {  
+  const fetchTopics = useTopicStore((state) => state.fetchTopics)
+
+  useEffect( () => {
+    console.log("this is reached in useEffect")
+    fetchTopics()
+  }, [fetchTopics])
+  
   return (
     <SessionProvider session={session}>
       <MainLayout>

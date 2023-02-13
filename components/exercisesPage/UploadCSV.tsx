@@ -5,10 +5,13 @@ import { Question, Exercise } from '../../types/topics'
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, message, Upload } from 'antd';
 import type { UploadFile } from 'antd/es/upload/interface';
+import { useTopicStore } from '../../store';
 
 const UploadCSV = ({ exercise, topicId }: { exercise: Exercise, topicId: string}) => {
-    const [fileList, setFileList] = useState<Blob[]>([]);
+    const [fileList, setFileList] = useState<any>([]);
     const [uploading, setUploading] = useState(false);
+
+    const bulkAddQuestions = useTopicStore(state => state.bulkAddQuestions)
     
     const fileReader = new FileReader();
 
@@ -42,6 +45,8 @@ const UploadCSV = ({ exercise, topicId }: { exercise: Exercise, topicId: string}
                         setUploading(true)
                         console.log(questions)
                         addBulkQuestions(topicId, exerciseId, questions)
+                        bulkAddQuestions(topicId, exerciseId, questions)
+
                     })
                     .then(() => setFileList([]))
                     .finally(() => {
@@ -56,18 +61,7 @@ const UploadCSV = ({ exercise, topicId }: { exercise: Exercise, topicId: string}
 
     return (
         <form className='flex'>
-            {/* <input
-                type={"file"}
-                id={"csvFileInput"}
-                accept={".csv"}
-                onChange={handleOnChange}
-            />
 
-            <Button onClick={(e) => {
-                handleOnSubmit(e, exercise.name);
-            }}>
-                Save
-            </Button> */}
             <Upload {...props} maxCount={1}>
                 <Button icon={<UploadOutlined />} size={'small'} type={'dashed'}>Upload CSV</Button>
             </Upload>

@@ -14,12 +14,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const topics = useTopicStore(state => state.topics)
+  console.log("Topics:", topics)
   
-  const fetchTopics = useTopicStore((state) => state.fetchTopics)
-
-  useEffect( () => {
-    fetchTopics()
-  }, [fetchTopics])
 
   return (
     <>
