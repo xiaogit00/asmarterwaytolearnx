@@ -13,8 +13,13 @@ import { useTopicStore, useTopicIdStore } from '../store'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
-  useTopicStore.getState().fetchTopics()
   const topics = useTopicStore(state => state.topics)
+  
+  const fetchTopics = useTopicStore((state) => state.fetchTopics)
+
+  useEffect( () => {
+    fetchTopics()
+  }, [fetchTopics])
 
   return (
     <>

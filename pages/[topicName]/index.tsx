@@ -9,13 +9,13 @@ import { useTopicStore, useTopicIdStore } from '../../store'
 
 const TopicName = () => {
     const topicId = useTopicIdStore((state) => state.topicId)
-    const topicsData = useTopicStore(state => state.topics)
-    console.log(topicsData)
+    const topics = useTopicStore(state => state.topics)
+    console.log("topics", topicId)
     
 
 
-    if (topicId && topicsData.length > 0) {
-        const exercises: Exercise[] = topicsData.filter(topic => topic._id === topicId)[0].exercises
+    if (topicId && topics.length > 0) {
+        const exercises: Exercise[] = topics.filter(topic => topic._id === topicId)[0].exercises
         return (
             <>
                 <div className='text-center mb-24'>
