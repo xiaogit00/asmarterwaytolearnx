@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import ProgressBar from '../../../components/ProgressBar'
-import MainLayout from '../../../layouts/MainLayout'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import AnswerInput from '../../../components/AnswerInput';
@@ -47,8 +46,8 @@ const Question = () => {
       const lastQuestion = questionNumberMinusOne + 1 === maxQuestions
 
       return (
-        <MainLayout>
-            {contextHolder}
+        <>
+        {contextHolder}
             <div className='flex flex-col items-center justify-between gap-y-16 pb-32'>
                 <ProgressBar numOfQns={exerciseQuestions.length} current={questionNumberMinusOne}/>
                 <QuestionText text={exerciseQuestions[questionNumberMinusOne].question}/>
@@ -84,7 +83,8 @@ const Question = () => {
                 
                 : null}
             </div>
-        </MainLayout>
+        </>
+            
     )
     }
 }

@@ -2,7 +2,17 @@
 
 import axios from "axios"
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL 
+const baseUrl = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_API_URL : process.env.NEXT_PUBLIC_API_DEV_URL
+
+const getAllTopics = async () => {
+    try {
+        const res = await axios.get(baseUrl + '/topics')
+        console.log(res.data)
+        return res.data
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 const addTopic = async (topic: string, userId: string) => {
     try {
@@ -33,6 +43,7 @@ const updateTopicName = async (topicId: string, topicName: string) => {
 }
 
 export {
+    getAllTopics,
     addTopic, 
     deleteTopic,
     updateTopicName

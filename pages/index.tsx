@@ -1,23 +1,27 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
-import { MenuOutlined } from '@ant-design/icons'
 import EmptyContainer from '../components/EmptyContainer'
 import TopicList from '../components/topicsPage/TopicList'
-import MainLayout from '../layouts/MainLayout'
-import { useTopicStore } from '../store'
+import { Topic } from '../types/topics'
+import { getAllTopics } from '../services/topicServices'
+import { useSession } from 'next-auth/react'
+import { useState, useEffect } from 'react'
+import { useTopicStore, useTopicIdStore } from '../store'
+
+
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  useTopicStore.getState().fetchTopics()
+  const topics = useTopicStore(state => state.topics)
 
-  const topicsData = useTopicStore(state => state.topics)
-  console.log("Topics:", topicsData)
   return (
-    <MainLayout title="A Smarter Way to Learn X">
-      {topicsData.length > 0 ? (<TopicList/>) : <EmptyContainer topic/>}
-    </MainLayout>
+    <>
+      <div className='text-center mb-24'>
+        <h2 className='font-sans text-4xl font-semibold'>A Smarter Way to Learn X</h2>
+      </div>
+      {topics.length > 0 ? (<TopicList/>) : <EmptyContainer topic/>}
+    </>
   )
 }

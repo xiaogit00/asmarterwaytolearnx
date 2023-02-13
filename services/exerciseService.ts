@@ -2,7 +2,7 @@
 
 import axios from "axios"
 
-const baseUrl = process.env.NEXT_PUBLIC_API_URL 
+const baseUrl = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_API_URL : process.env.NEXT_PUBLIC_API_DEV_URL 
 
 const addExercise = async (topicId: string, exerciseName: string) => {
     try {
