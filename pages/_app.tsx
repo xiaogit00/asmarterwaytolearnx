@@ -9,9 +9,7 @@ import { useTopicStore, useTopicIdStore } from '../store'
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {  
   const fetchTopics = useTopicStore((state) => state.fetchTopics)
-
   useEffect( () => {
-    console.log("this is reached in useEffect")
     fetchTopics()
   }, [fetchTopics])
   

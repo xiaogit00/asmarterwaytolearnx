@@ -30,6 +30,7 @@ const useTopicStore = create<TopicState>((set) => ({
         set({ topics: await res.json()})
       }
     },
+    
     addTopic: (topicData: any) => 
       set(
         produce((draft) => {

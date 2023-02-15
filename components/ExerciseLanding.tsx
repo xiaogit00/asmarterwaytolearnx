@@ -8,12 +8,10 @@ import Link from 'next/link'
 const ExerciseLandingPage = ({ exerciseName }: {exerciseName : string | string[] | undefined}): JSX.Element => {
     const router = useRouter()
     const topicName: RouterQueryString = router.query.topicName
-    console.log("TopicName:", topicName)
     const questionNumberMinusOne: RouterQueryString = router.query.questionId
     const questionNumber = Number(questionNumberMinusOne) - 1
     
     const topics = useTopicStore(state => state.topics)
-    console.log("topics in exerciseLanding:", topics)
     const exerciseQuestions = filterExerciseQuestions(topics, topicName, exerciseName)
     
     if (exerciseQuestions && exerciseQuestions.length > 0) {

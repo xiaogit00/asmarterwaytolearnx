@@ -10,7 +10,6 @@ import { useTopicStore, useTopicIdStore } from '../../store'
 const TopicName = () => {
     const topicId = useTopicIdStore((state) => state.topicId)
     const topics = useTopicStore(state => state.topics)
-    console.log("topics", topics)
 
     if (topicId && topics.length > 0) {
         const exercises: Exercise[] = topics.filter(topic => topic._id === topicId)[0].exercises

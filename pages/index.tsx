@@ -2,19 +2,14 @@ import React from 'react'
 import { Inter } from '@next/font/google'
 import EmptyContainer from '../components/EmptyContainer'
 import TopicList from '../components/topicsPage/TopicList'
-import { Topic } from '../types/topics'
-import { getAllTopics } from '../services/topicServices'
-import { useSession } from 'next-auth/react'
-import { useState, useEffect } from 'react'
 import { useTopicStore, useTopicIdStore } from '../store'
-
 
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const topics = useTopicStore(state => state.topics)
-  console.log("Topics:", topics)
+  
   
 
   return (

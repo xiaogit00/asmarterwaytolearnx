@@ -62,7 +62,7 @@ const AddTopicModal = ( { setIsModalOpen }: {setIsModalOpen: React.Dispatch<Reac
                         </Form.Item>
                         <div className="flex items-center justify-between p-6 pt-1 rounded-b">
                           <Button size={'large'} block style={{marginRight:"8px"}} onClick={() => setIsModalOpen(false)}> Close</Button>
-                          <Form.Item >
+                          <Form.Item>
                             <Button htmlType="submit" size={'large'} block type="primary" style={{backgroundColor: "#7F56D9"}}> Confirm</Button>
                           </Form.Item>
                           
