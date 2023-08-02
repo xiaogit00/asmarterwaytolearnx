@@ -6,13 +6,13 @@ import { Topic } from '../types/topics';
 import { RouterQueryString } from '../types/router';
 import { NotificationInstance } from 'antd/es/notification/interface';
 
-const openNotification = (api: NotificationInstance, exerciseName: RouterQueryString, topicName: RouterQueryString, questionNumber: number) => {
+const openNotification = (api: NotificationInstance, exerciseId: RouterQueryString, topicId: RouterQueryString, questionNumber: number) => {
     const key = `open${Date.now()}`;
     const btn = (
       <Space>
         <Button onClick={() => {
           api.destroy()
-          Router.push(`/${topicName}/${exerciseName}/${Number(questionNumber) + 1}`)
+          Router.push(`/topic/${topicId}/ex/${exerciseId}/qn/${Number(questionNumber) + 1}`)
         }}>
           Ok
         </Button>
@@ -27,10 +27,10 @@ const openNotification = (api: NotificationInstance, exerciseName: RouterQuerySt
     });
 };
 
-const filterExerciseQuestions = (topicsData: Topic[] | null, topicName: RouterQueryString, exerciseName: RouterQueryString): Question[] | undefined => {
-  if (topicsData && topicsData.length > 0 && exerciseName && topicName) {
-    const topicData = topicsData.filter(topic => topic.name === topicName)
-    const exerciseData = topicData[0].exercises.filter(exercise => exercise.name === exerciseName)
+const filterExerciseQuestions = (topicsData: Topic[] | null, topicId: RouterQueryString, exerciseId: RouterQueryString): Question[] | undefined => {
+  if (topicsData && topicsData.length > 0 && exerciseId && topicId) {
+    const topicData = topicsData.filter(topic => topic._id === topicId)
+    const exerciseData = topicData[0].exercises.filter(exercise => exercise._id === exerciseId)
     return exerciseData[0].questions
   } else {
     return undefined

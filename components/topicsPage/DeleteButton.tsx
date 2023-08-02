@@ -8,7 +8,7 @@ const DeleteButton = ( {topic}: {topic: Topic} ) => {
 
     const handleDelete = async (topicId: string) => {
         //call backend service 
-        const res = await deleteTopic(topicId)
+        await deleteTopic(topicId)
         deleteTopicFromStore(topicId)
 
     }

@@ -1,6 +1,6 @@
 import { authenticate } from './routesHelper'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Topic as TopicType, Exercise, Question } from '../types/topics'
+import { Topic as TopicType, Exercise, Question, NewQuestion } from '../types/topics'
 import { toQuestion, toQuestions } from '../utils/typeguards'
 const Topic = require('../models/topic')
 import produce from "immer"
@@ -30,16 +30,21 @@ const getAllQuestions = async (req: NextApiRequest, res: NextApiResponse) => {
 const postSingleQuestion = async (req: NextApiRequest, res: NextApiResponse) => { 
     const { topicId, exerciseId } = req.query
     const topicData = await Topic.find({_id: topicId})
-    const questions = topicData[0].exercises.filter((exercise: Exercise) => exercise._id == exerciseId)
+    const exercise = topicData[0].exercises.filter((exercise: Exercise) => exercise._id == exerciseId)
 
     if (env === "development" || env === "production") {
         const isUser = await authenticate(req, String(topicId))
         if (isUser) {
-            const newQuestion: Question = toQuestion(req.body)
+            const newQuestion: NewQuestion = toQuestion(req.body)
+            // const newTopic: TopicType = produce((draft) => {
+            //     const exercise = draft.exercises.find((exercise: Exercise) => exercise._id === exerciseId)
+            //     exercise.push(newQuestion)
+            // })
+
             const newExerciseData = {
-                ...questions[0].toObject(), 
+                ...exercise[0].toObject(), 
                 questions: [
-                    ...questions[0].questions,
+                    ...exercise[0].questions,
                     newQuestion
                 ]
             }
@@ -47,19 +52,20 @@ const postSingleQuestion = async (req: NextApiRequest, res: NextApiResponse) => 
                 ...topicData[0].toObject(),
                 exercises: newExerciseData
             }
+            console.log(newTopic)
 
             await Topic.findOneAndUpdate({_id: topicId}, newTopic)
-            console.log(`New question ${newQuestion._id} successfully added`)
-            res.status(204).json(newQuestion)
+            console.log(`New question successfully added`)
+            res.status(200).json(newQuestion)
         } else {
             res.status(401).send("You are not authorized.")
         }
     } else if (env === "test") {
-        const newQuestion: Question = toQuestion(req.body)
+        const newQuestion: NewQuestion = toQuestion(req.body)
         const newExerciseData = {
-            ...questions[0].toObject(), 
+            ...exercise[0].toObject(), 
             questions: [
-                ...questions[0].questions,
+                ...exercise[0].questions,
                 newQuestion
             ]
         }
@@ -69,7 +75,7 @@ const postSingleQuestion = async (req: NextApiRequest, res: NextApiResponse) => 
         }
 
         await Topic.findOneAndUpdate({_id: topicId}, newTopic)
-        console.log(`New question ${newQuestion._id} successfully added`)
+        console.log(`New question successfully added`)
         res.status(204).json(newQuestion)
     }
 }
@@ -83,7 +89,7 @@ const bulkAdd = async (req: NextApiRequest, res: NextApiResponse) => {
         const isUser = await authenticate(req, String(topicId))
         if (isUser) {
             // Receives JSON object with an array of questions
-            const newQuestions: Question[] = toQuestions(req.body)
+            const newQuestions: NewQuestion[] = toQuestions(req.body)
             // console.log(exercise)
             const newExerciseData: Exercise = {
                 ...exercise.toObject(), 
@@ -107,7 +113,7 @@ const bulkAdd = async (req: NextApiRequest, res: NextApiResponse) => {
         }
     } else if (env === "test") {
         // Receives JSON object with an array of questions
-        const newQuestions: Question[] = toQuestions(req.body)
+        const newQuestions: NewQuestion[] = toQuestions(req.body)
         // console.log(exercise)
         const newExerciseData: Exercise = {
             ...exercise.toObject(), 

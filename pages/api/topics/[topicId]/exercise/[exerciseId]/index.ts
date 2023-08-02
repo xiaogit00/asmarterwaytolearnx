@@ -7,6 +7,9 @@ import questionRoutes from "../../../../../../routes/questionRoutes"
 
 export default async function questionHandler(req: NextApiRequest, res: NextApiResponse) {
     await mongooseConnect()
+    
+    const { exerciseId } = req.query
+    console.log("exerciseId within router", exerciseId)
 
     switch (req.method) {
         case "GET": 

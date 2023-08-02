@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import ProgressBar from '../../../components/ProgressBar'
+import ProgressBar from '../../../../../../components/ProgressBar'
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import AnswerInput from '../../../components/AnswerInput';
+import AnswerInput from '../../../../../../components/AnswerInput';
 import { Button, notification } from 'antd'
-import { openNotification, filterExerciseQuestions } from '../../../components/exercisePageHelpers';
-import Answer from '../../../components/Answer';
-import QuestionText from '../../../components/QuestionText';
-import { RouterQueryString } from '../../../types/router';
-import { useTopicStore } from '../../../store';
+import { openNotification, filterExerciseQuestions } from '../../../../../../components/exercisePageHelpers';
+import Answer from '../../../../../../components/Answer';
+import QuestionText from '../../../../../../components/QuestionText';
+import { RouterQueryString } from '../../../../../../types/router';
+import { useTopicStore } from '../../../../../../store';
 
 const Question = () => {
 
@@ -20,19 +20,19 @@ const Question = () => {
 
 
     const router = useRouter()
-    const exerciseName: RouterQueryString = router.query.exerciseName
-    const topicName: RouterQueryString = router.query.topicName
+    const exerciseId: RouterQueryString = router.query.exerciseId
+    const topicId: RouterQueryString = router.query.topicId
     const questionNumber: number = Number(router.query.questionId)
   
     const questionNumberMinusOne: number = questionNumber - 1
     
     const topics = useTopicStore(state => state.topics)
-    const exerciseQuestions = filterExerciseQuestions(topics, topicName, exerciseName)
+    const exerciseQuestions = filterExerciseQuestions(topics, topicId, exerciseId)
     
 
     const handleAnswerSubmit = () => {
       if (exerciseQuestions && answer === exerciseQuestions[questionNumberMinusOne].answer) {
-        openNotification(api, exerciseName, topicName, questionNumber)
+        openNotification(api, exerciseId, topicId, questionNumber)
         setCorrect(true)
         setNumCorrect(numCorrect + 1)
         setAnswer('')
@@ -71,8 +71,8 @@ const Question = () => {
                 {correct === false ? 
                   <Answer 
                     text={exerciseQuestions[questionNumberMinusOne].answer} 
-                    exerciseName={exerciseName} 
-                    topicName={topicName} 
+                    exerciseId={exerciseId} 
+                    topicId={topicId} 
                     questionNumber={questionNumber}
                     setCorrect={setCorrect}
                     setAnswer={setAnswer}

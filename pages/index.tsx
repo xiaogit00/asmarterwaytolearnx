@@ -2,7 +2,7 @@ import React from 'react'
 import { Inter } from '@next/font/google'
 import EmptyContainer from '../components/EmptyContainer'
 import TopicList from '../components/topicsPage/TopicList'
-import { useTopicStore, useTopicIdStore } from '../store'
+import { useTopicStore } from '../store'
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -10,8 +10,6 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   const topics = useTopicStore(state => state.topics)
   
-  
-
   return (
     <>
       <div className='text-center mb-24'>

@@ -3,29 +3,37 @@ import { useRouter } from 'next/router'
 import { RouterQueryString } from '../types/router';
 import { useTopicStore } from '../store';
 import { filterExerciseQuestions } from './exercisePageHelpers';
+import { Exercise } from '../types/topics';
 import Link from 'next/link'
+import EmptyContainer from './EmptyContainer';
 
-const ExerciseLandingPage = ({ exerciseName }: {exerciseName : string | string[] | undefined}): JSX.Element => {
+const ExerciseLandingPage = ({ exercise }: {exercise : Exercise}): JSX.Element => {
     const router = useRouter()
-    const topicName: RouterQueryString = router.query.topicName
-    const questionNumberMinusOne: RouterQueryString = router.query.questionId
-    const questionNumber = Number(questionNumberMinusOne) - 1
+    const { topicId, exerciseId } = router.query
     
-    const topics = useTopicStore(state => state.topics)
-    const exerciseQuestions = filterExerciseQuestions(topics, topicName, exerciseName)
     
-    if (exerciseQuestions && exerciseQuestions.length > 0) {
+    if (exercise.questions && exercise.questions.length > 0) {
         return (
             <>
-                <p>Alright, are you ready to start your journey with {exerciseName}??</p>
-                <Link href={'/' + topicName + '/' + exerciseName + '/' + 1}><Button> Begin</Button></Link>
+                <div className='container mx-auto flex flex-col items-center bg-white rounded-md w-3/4 py-64'>
+                    <p className='w-3/4 text-5xl text-center mb-32 font-semibold'>Are you ready to begin your journey with {exercise.name}??</p>
+                    <Link href={'/topic/' + topicId + '/ex/' + exerciseId + '/qn/' + 1}><Button size={'large'}> Begin</Button></Link>
+                    <div className='mt-32'>No. of qns in this exercise: {exercise.questions.length}</div>
+                    <div className='m-16 flex gap-8'>
+                        <Link href={'/topic/' + topicId + '/ex/' + exerciseId + '/qn/add-questions'}><Button> Add Question</Button></Link>
+                        <Link href={'/topic/' + topicId + '/ex/' + exerciseId + '/qn/view-questions' }><Button> View Questions</Button></Link>
+                    </div>
+                    
+                </div>
+
+                
             </>
             
         )
     } else {
         return (
             <>
-                <p>There are no questions in this exercise. Pls upload some questions.</p>
+                <EmptyContainer question/>
             </>
             
         )

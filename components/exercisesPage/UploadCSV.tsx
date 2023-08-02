@@ -6,10 +6,14 @@ import { UploadOutlined } from '@ant-design/icons';
 import { Button, message, Upload } from 'antd';
 import type { UploadFile } from 'antd/es/upload/interface';
 import { useTopicStore } from '../../store';
+import { useRouter } from 'next/router';
 
-const UploadCSV = ({ exercise, topicId }: { exercise: Exercise, topicId: string}) => {
+const UploadCSV = () => {
     const [fileList, setFileList] = useState<any>([]);
     const [uploading, setUploading] = useState(false);
+    const router = useRouter()
+    const topicId = router.query.topicId as string
+    const exerciseId = router.query.exerciseId as string
 
     const bulkAddQuestions = useTopicStore(state => state.bulkAddQuestions)
     
@@ -30,15 +34,12 @@ const UploadCSV = ({ exercise, topicId }: { exercise: Exercise, topicId: string}
         accept: '.csv'
   }
 
-    const handleOnSubmit = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, exerciseName: string) => {
+    const handleOnSubmit = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault();
-        const exerciseId: string = exercise._id
-        console.log(exerciseId)
         if (fileList.length > 0) {
             console.log(fileList[0])
             fileReader.onload = function (event: ProgressEvent<FileReader>) {
                 const csvOutput = event.target?.result;
-                console.log("thisis reached")
                 csv()
                     .fromString(csvOutput)
                     .then((questions: Question[]) => {
@@ -68,7 +69,7 @@ const UploadCSV = ({ exercise, topicId }: { exercise: Exercise, topicId: string}
 
             {fileList.length>0 ? (<Button
                         onClick={(e: any) => {
-                            handleOnSubmit(e, exercise.name);
+                            handleOnSubmit(e);
                         }}
                         loading={uploading}
                         type={'link'}

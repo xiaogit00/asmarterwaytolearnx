@@ -8,8 +8,6 @@ import { persist, createJSONStorage } from 'zustand/middleware'
 
 interface TopicState {
   topics: Topic[],
-  selectedTopicId: string,
-  setSelectedTopicId: (topicId: string) => void,
   fetchTopics: () => void,
   addTopic: (topicData: any) => void,
   deleteTopic: (topicId: string) => void,
@@ -22,8 +20,6 @@ interface TopicState {
 
 const useTopicStore = create<TopicState>((set) => ({
     topics: [],
-    selectedTopicId: '',
-    setSelectedTopicId: (topicId: string) => set({selectedTopicId: topicId}),
     fetchTopics: async () => {
       const res = await fetch(process.env.NEXT_PUBLIC_API_URL+'/topics')
       if (res.status === 200) {
@@ -38,6 +34,7 @@ const useTopicStore = create<TopicState>((set) => ({
             _id: topicData._id,
             userId: topicData.userId,
             name: topicData.name,
+            slug: topicData.slug,
             exercises: topicData.exercises
           })
         })
@@ -53,6 +50,7 @@ const useTopicStore = create<TopicState>((set) => ({
       set(
         produce((draft) => {
           const topic = draft.topics.find(((topic: Topic) => topic._id === topicId))
+          console.log("topic",topic)
           topic.name = topicName
         })
       ), 
@@ -60,8 +58,11 @@ const useTopicStore = create<TopicState>((set) => ({
       set(
         produce((draft) => {
           const topic = draft.topics.find((topic: Topic) => topic._id === topicId)
+          
+          console.log("exerciseData", exerciseData)
           topic.exercises.push({
             _id: exerciseData._id,
+            slug: exerciseData.slug,
             name: exerciseData.name,
             questions: exerciseData.questions
           })
@@ -99,14 +100,14 @@ const useTopicStore = create<TopicState>((set) => ({
     setTopicId: (topicId: string) => void
   }
 
- const useTopicIdStore = create<TopicIdState>()(
+ const useTopicSlugStore = create<TopicIdState>()(
     persist(
       (set, get) => ({
         topicId: '',
         setTopicId: (topicId: string) => set({ topicId: topicId }),
       }),
       {
-        name: 'selectedTopicId', // name of item in the storage (must be unique)
+        name: 'selectedTopicSlug', // name of item in the storage (must be unique)
         storage: createJSONStorage(() => sessionStorage) // (optional) by default the 'localStorage' is used
       }
     )
@@ -116,4 +117,4 @@ const useTopicStore = create<TopicState>((set) => ({
   
 
 
-  export { useTopicStore, useTopicIdStore }
+  export { useTopicStore, useTopicSlugStore }

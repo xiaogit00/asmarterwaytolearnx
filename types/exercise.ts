@@ -2,8 +2,8 @@ import { RouterQueryString } from "./router"
 
 export interface AnswerProps {
     text: string,
-    exerciseName: RouterQueryString,
-    topicName: RouterQueryString,
+    exerciseId: RouterQueryString,
+    topicId: RouterQueryString,
     questionNumber: number,
     setCorrect: React.Dispatch<React.SetStateAction<boolean | null>>
     setAnswer: React.Dispatch<React.SetStateAction<string>>,

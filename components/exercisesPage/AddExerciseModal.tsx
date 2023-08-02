@@ -3,19 +3,23 @@ import { FlagOutlined, CloseOutlined } from '@ant-design/icons'
 import { Input, Form, Button } from 'antd'
 import { addExercise } from '../../services/exerciseService'
 import { useTopicStore } from '../../store'
+import { useRouter } from 'next/router'
 
 
-const AddExerciseModal = ( { setIsModalOpen, topicId }: {setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>, topicId: string}): JSX.Element => {
+const AddExerciseModal = ( { setIsModalOpen }: {setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>}): JSX.Element => {
   const [ newExerciseName, setNewExerciseName ] = useState<string>('')
+
+  const router = useRouter()
+  const { topicId } = router.query 
 
   const addExerciseToStore = useTopicStore(state => state.addExercise)
   const topics = useTopicStore(state => state.topics)
 
   const handleSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault
-    console.log("topicId",topicId)
-    const res = await addExercise(topicId, newExerciseName)
-    addExerciseToStore(topicId, res)
+    const res = await addExercise(topicId as string, newExerciseName)
+    console.log("res:", res)
+    addExerciseToStore(topicId as string, res)
     setNewExerciseName('')
     setIsModalOpen(false)
   }

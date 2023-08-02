@@ -1,8 +1,8 @@
 import { Input } from "antd"
 import { useState } from "react"
-import { useTopicStore, useTopicIdStore } from "../../store"
+import { useTopicStore } from "../../store"
 import { updateTopicName } from "../../services/topicServices"
-import Router from "next/router"
+import { useRouter } from "next/router"
 import { TopicNameProps } from '../../types/topics'
 import Link from 'next/link'
 
@@ -10,7 +10,6 @@ const TopicName = ({topic, i, activatedTopicId, setActivatedTopicId}: TopicNameP
 
     const [ topicName, setTopicName ] = useState<string>(topic.name)
     const updateTopicnameFromStore = useTopicStore((state) => state.updateTopicName)
-    const setTopicId = useTopicIdStore((state) => state.setTopicId)
 
     const handleSaveTopic = async (topicId: string, topicName: string) => {
         const res = await updateTopicName(topicId, topicName) 
@@ -18,12 +17,9 @@ const TopicName = ({topic, i, activatedTopicId, setActivatedTopicId}: TopicNameP
         setActivatedTopicId(null)
     }
 
-    const handleSelectTopic = () => {
-        setTopicId(topic._id)
-    }
     
     if (activatedTopicId !== topic._id) {
-        return  <Link onClick={handleSelectTopic} href={`./${topic.name}`}>{i + 1}. {topic.name}</Link>
+        return  <Link href={`./topic/${topic._id}`}>{i + 1}. {topic.name}</Link>
     } else {
         return (
             <Input 

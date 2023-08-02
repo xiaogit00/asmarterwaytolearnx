@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import { SessionProvider } from "next-auth/react"
 import MainLayout from '../layouts/MainLayout'
 import { useState, useEffect } from 'react'
-import { useTopicStore, useTopicIdStore } from '../store'
+import { useTopicStore } from '../store'
 
 
 

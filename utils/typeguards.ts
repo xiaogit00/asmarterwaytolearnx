@@ -1,5 +1,5 @@
 import { ObjectFlags } from "typescript"
-import { NewTopic, Exercise, Question } from "../types/topics"
+import { NewTopic, Exercise, Question, NewExercise, NewQuestion } from "../types/topics"
 const mongoose = require('mongoose')
 
 const parseUserId = (userId: unknown): string => {
@@ -34,9 +34,8 @@ export const toNewTopic = (body: any): NewTopic => {
     return newTopic
 }
 
-export const toExercise = (body: any): Exercise => {
-    const newExercise: Exercise = {
-        _id: mongoose.Types.ObjectId(),
+export const toExercise = (body: any): NewExercise => {
+    const newExercise: NewExercise = {
         name: parseString(body.name),
         questions: []
     }
@@ -44,9 +43,8 @@ export const toExercise = (body: any): Exercise => {
     return newExercise
 }
 
-export const toQuestion = (body: any): Question => {
-    const newQuestion: Question = {
-        _id: mongoose.Types.ObjectId(),
+export const toQuestion = (body: any): NewQuestion => {
+    const newQuestion: NewQuestion = {
         question: parseString(body.question),
         code: parseString(body.code),
         answer: parseString(body.answer)
@@ -58,6 +56,7 @@ export const toQuestion = (body: any): Question => {
 export const toExistingQuestion = (body: any): Question => {
     const newQuestion: Question = {
         _id: parseString(body._id),
+        slug: parseString(body.slug),
         question: parseString(body.question),
         code: parseString(body.code),
         answer: parseString(body.answer)
@@ -66,11 +65,10 @@ export const toExistingQuestion = (body: any): Question => {
     return newQuestion
 }
 
-export const toQuestions = (body: any) : Question[] => {
-    const newQuestions: Question[] = []
-    body.map((item: Question) => {
+export const toQuestions = (body: any) : NewQuestion[] => {
+    const newQuestions: NewQuestion[] = []
+    body.map((item: NewQuestion) => {
         const newQuestion = {
-            _id: mongoose.Types.ObjectId(),
             question: parseString(item.question),
             code: parseString(item.code),
             answer: parseString(item.answer)

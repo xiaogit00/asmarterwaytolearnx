@@ -29,6 +29,7 @@ const addTopic = async (topic: string, userId: string) => {
 const deleteTopic = async (topicId: string) => {
     try {
         const res = await axios.delete(baseUrl + `/topics/${topicId}`)
+        return res.status
     } catch (err) {
         console.log(err)
     }

@@ -1,9 +1,12 @@
 import { DeleteOutlined } from "@ant-design/icons"
 import { deleteExercise } from "../../services/exerciseService"
 import { useTopicStore } from "../../store"
+import { useRouter } from "next/router"
 
-const DeleteButton = ({exerciseId, topicId}: {exerciseId: string, topicId: string}) => {
-
+const DeleteButton = ({ exerciseId}: {exerciseId: string}) => {
+    const router = useRouter()
+    const topicId = router.query.topicId as string
+    console.log("topic and exedrciseId", topicId, exerciseId)
     const deleteExerciseFromStore = useTopicStore(state => state.deleteExercise)
     
     const handleDelete = async (exerciseId: string) => {
