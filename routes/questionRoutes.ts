@@ -6,6 +6,7 @@ const Topic = require('../models/topic')
 import produce from "immer"
 import { toExistingQuestion } from '../utils/typeguards'
 
+
 const env = process.env.NODE_ENV 
 const secret = process.env.SECRET
 
@@ -29,32 +30,20 @@ const getAllQuestions = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const postSingleQuestion = async (req: NextApiRequest, res: NextApiResponse) => { 
     const { topicId, exerciseId } = req.query
-    const topicData = await Topic.find({_id: topicId})
-    const exercise = topicData[0].exercises.filter((exercise: Exercise) => exercise._id == exerciseId)
+    let topicData = await Topic.findOne({_id: topicId})
+    console.log(topicData)
+    // console.log("topicData", topicData)
+    // const exercises = topicData[0].exercises
+    // const exercise = topicData[0].exercises.filter((exercise: Exercise) => exercise._id == exerciseId)
 
     if (env === "development" || env === "production") {
         const isUser = await authenticate(req, String(topicId))
         if (isUser) {
             const newQuestion: NewQuestion = toQuestion(req.body)
-            // const newTopic: TopicType = produce((draft) => {
-            //     const exercise = draft.exercises.find((exercise: Exercise) => exercise._id === exerciseId)
-            //     exercise.push(newQuestion)
-            // })
+            const exerciseIndex = topicData.exercises.findIndex((exercise: Exercise) => exercise._id == exerciseId)
+            topicData.exercises[exerciseIndex].questions.push(newQuestion)
 
-            const newExerciseData = {
-                ...exercise[0].toObject(), 
-                questions: [
-                    ...exercise[0].questions,
-                    newQuestion
-                ]
-            }
-            const newTopic: TopicType = {
-                ...topicData[0].toObject(),
-                exercises: newExerciseData
-            }
-            console.log(newTopic)
-
-            await Topic.findOneAndUpdate({_id: topicId}, newTopic)
+            await Topic.findOneAndUpdate({_id: topicId}, topicData)
             console.log(`New question successfully added`)
             res.status(200).json(newQuestion)
         } else {
@@ -62,21 +51,12 @@ const postSingleQuestion = async (req: NextApiRequest, res: NextApiResponse) => 
         }
     } else if (env === "test") {
         const newQuestion: NewQuestion = toQuestion(req.body)
-        const newExerciseData = {
-            ...exercise[0].toObject(), 
-            questions: [
-                ...exercise[0].questions,
-                newQuestion
-            ]
-        }
-        const newTopic: TopicType = {
-            ...topicData[0].toObject(),
-            exercises: newExerciseData
-        }
+        const exerciseIndex = topicData.exercises.findIndex((exercise: Exercise) => exercise._id == exerciseId)
+        topicData.exercises[exerciseIndex].questions.push(newQuestion)
 
-        await Topic.findOneAndUpdate({_id: topicId}, newTopic)
+        await Topic.findOneAndUpdate({_id: topicId}, topicData)
         console.log(`New question successfully added`)
-        res.status(204).json(newQuestion)
+        res.status(200).json(newQuestion)
     }
 }
 
@@ -137,41 +117,25 @@ const bulkAdd = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const deleteQuestion = async (req: NextApiRequest, res: NextApiResponse) => { 
     const { topicId, exerciseId, questionId } = req.query
-    const topicData = await Topic.find({_id: topicId})
-    const exercise = topicData[0].exercises.find((exercise: Exercise) => exercise._id == exerciseId)
-    console.log("EXERCISE",exercise)
+    const topicData = await Topic.findOne({_id: topicId})
+    const exerciseIndex = topicData.exercises.findIndex((exercise: Exercise) => exercise._id == exerciseId)
+    const questionIndex = topicData.exercises[exerciseIndex].questions.findIndex((question: Question) => question._id == questionId)
 
     if (env === "development" || env === "production") {
         const isUser = await authenticate(req, String(topicId))
         if (isUser) {
-            const newQuestionsData = exercise.questions.filter((question: Question) => question._id != questionId)
-            const newExerciseData: Exercise = {
-                ...exercise.toObject(), 
-                questions: newQuestionsData
-            }
-            const newTopic: TopicType = {
-                ...topicData[0].toObject(),
-                exercises: newExerciseData
-            }
+            topicData.exercises[exerciseIndex].questions.splice(questionIndex, 1)
 
-            await Topic.findOneAndUpdate({_id: topicId}, newTopic)
+            await Topic.findOneAndUpdate({_id: topicId}, topicData)
             console.log(`Question ${questionId} successfully deleted`)
             res.status(204).end()
         } else {
             res.status(401).send("You are not authorized.")
         }
     } else if (env === "test") {
-        const newQuestionsData = exercise.questions.filter((question: Question) => question._id != questionId)
-        const newExerciseData: Exercise = {
-            ...exercise.toObject(), 
-            questions: newQuestionsData
-        }
-        const newTopic: TopicType = {
-            ...topicData[0].toObject(),
-            exercises: newExerciseData
-        }
+        topicData.exercises[exerciseIndex].questions.splice(questionIndex, 1)
 
-        await Topic.findOneAndUpdate({_id: topicId}, newTopic)
+        await Topic.findOneAndUpdate({_id: topicId}, topicData)
         console.log(`Question ${questionId} successfully deleted`)
         res.status(204).end()
     }

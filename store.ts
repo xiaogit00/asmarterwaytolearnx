@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import produce from 'immer'
 import { topics } from './data/topics'
-import { Topic, Question } from './types/topics'
+import { Topic, Question, NewQuestion } from './types/topics'
 import { Exercise } from './types/topics'
 import { deleteExercise } from './services/exerciseService'
 import { persist, createJSONStorage } from 'zustand/middleware'
@@ -15,7 +15,8 @@ interface TopicState {
   addExercise: (topicId:string, exerciseData: any) => void,
   deleteExercise: (topicId:string, exerciseId: string) => void,
   updateExercise: (topicId: string, exerciseId: string, exerciseName: string) => void,
-  bulkAddQuestions: (topicId: string, exerciseId: string, questions: Question[]) => void
+  bulkAddQuestions: (topicId: string, exerciseId: string, questions: Question[]) => void,
+  addQuestion: (topicId: string, exerciseId: string, question: NewQuestion) => void
 }
 
 const useTopicStore = create<TopicState>((set) => ({
@@ -84,15 +85,23 @@ const useTopicStore = create<TopicState>((set) => ({
           exercise.name = exerciseName
         })
       ),
-      bulkAddQuestions: (topicId: string, exerciseId: string, questions: Question[]) => {
-        set(
-          produce((draft) => {
-            const topic = draft.topics.find((topic: Topic) => topic._id === topicId)
-            const exercise = topic.exercises.find((exercise: Exercise) => exercise._id === exerciseId)
-            exercise.questions = questions
-          })
-        )
-      }
+    bulkAddQuestions: (topicId: string, exerciseId: string, questions: Question[]) => {
+      set(
+        produce((draft) => {
+          const topic = draft.topics.find((topic: Topic) => topic._id === topicId)
+          const exercise = topic.exercises.find((exercise: Exercise) => exercise._id === exerciseId)
+          exercise.questions = questions
+        })
+      )
+    },
+    addQuestion: (topicId:string, exerciseId: string, question: NewQuestion) => 
+    set(
+      produce((draft) => {
+        const topic = draft.topics.find((topic: Topic) => topic._id === topicId)
+        const exerciseIndex = topic.exercises.findIndex((exercise: Exercise) => exercise._id === exerciseId)
+        topic.exercises[exerciseIndex].questions.push(question)
+      })
+    )
   }))
 
   interface TopicIdState {

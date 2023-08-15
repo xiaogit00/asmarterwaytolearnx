@@ -2,7 +2,7 @@ export interface Question {
     _id: string,
     slug: string,
     question: string,
-    code: string,
+    code: string | null,
     answer: string
 }
 

@@ -17,6 +17,8 @@ const Question = () => {
     const [ correct, setCorrect ] = useState< null | boolean >(null)
     const [ numCorrect, setNumCorrect ] = useState<number>(0)
     const [api, contextHolder] = notification.useNotification();
+    let lastQuestion: Boolean
+    let maxQuestions: number
 
 
     const router = useRouter()
@@ -32,7 +34,7 @@ const Question = () => {
 
     const handleAnswerSubmit = () => {
       if (exerciseQuestions && answer === exerciseQuestions[questionNumberMinusOne].answer) {
-        openNotification(api, exerciseId, topicId, questionNumber)
+        openNotification(api, exerciseId, topicId, questionNumber, lastQuestion, numCorrect + 1, maxQuestions)
         setCorrect(true)
         setNumCorrect(numCorrect + 1)
         setAnswer('')
@@ -42,8 +44,8 @@ const Question = () => {
     }
 
     if (exerciseQuestions) {
-      const maxQuestions = exerciseQuestions.length
-      const lastQuestion = questionNumberMinusOne + 1 === maxQuestions
+      maxQuestions = exerciseQuestions.length
+      lastQuestion = questionNumberMinusOne + 1 === maxQuestions
 
       return (
         <>

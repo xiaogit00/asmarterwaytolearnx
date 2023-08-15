@@ -2,15 +2,23 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 import { addQuestion } from '../../services/questionService';
+import { useTopicStore } from '../../store';
 
 const AddQuestionForm = () => {
     const router = useRouter()
+    const addQuestionToStore = useTopicStore(state => state.addQuestion)
     const { topicId, exerciseId } = router.query
     const onFinish = async (question: any) => {
         console.log('Success:', question);
         //Here, I'll need to input into the DB with the right params. Need to call the backend service. 
         const res = await addQuestion(String(topicId), String(exerciseId), question)
-        console.log(res)
+        if (res) {
+            addQuestionToStore(String(topicId), String(exerciseId), res)
+            router.push({
+                pathname: `/topic/${topicId}/ex/${exerciseId}`,
+            })
+        }
+        
       };
       
       const onFinishFailed = (errorInfo: any) => {
