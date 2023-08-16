@@ -49,14 +49,12 @@ export const toQuestion = (body: any): NewQuestion => {
         code: body.code,
         answer: parseString(body.answer)
     }
-
     return newQuestion
 }
 
 export const toExistingQuestion = (body: any): Question => {
     const newQuestion: Question = {
         _id: parseString(body._id),
-        slug: parseString(body.slug),
         question: parseString(body.question),
         code: parseString(body.code),
         answer: parseString(body.answer)

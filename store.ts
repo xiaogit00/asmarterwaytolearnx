@@ -16,7 +16,8 @@ interface TopicState {
   deleteExercise: (topicId:string, exerciseId: string) => void,
   updateExercise: (topicId: string, exerciseId: string, exerciseName: string) => void,
   bulkAddQuestions: (topicId: string, exerciseId: string, questions: Question[]) => void,
-  addQuestion: (topicId: string, exerciseId: string, question: NewQuestion) => void
+  addQuestion: (topicId: string, exerciseId: string, question: NewQuestion) => void,
+  updateQuestion: (topicId: string, exerciseId: string, questionId: string, question: Question) => void,
 }
 
 const useTopicStore = create<TopicState>((set) => ({
@@ -101,7 +102,17 @@ const useTopicStore = create<TopicState>((set) => ({
         const exerciseIndex = topic.exercises.findIndex((exercise: Exercise) => exercise._id === exerciseId)
         topic.exercises[exerciseIndex].questions.push(question)
       })
-    )
+    ),
+    updateQuestion: (topicId: string, exerciseId: string, questionId: string, question: Question) => {
+      set(
+        produce((draft) => {
+          const topic = draft.topics.find((topic: Topic) => topic._id === topicId)
+          const exerciseIndex = topic.exercises.findIndex((exercise: Exercise) => exercise._id === exerciseId)
+          const questionIndex = topic.exercises[exerciseIndex].questions.findIndex((question: Question) => question._id === questionId)
+          topic.exercises[exerciseIndex].questions[questionIndex] = question
+        })
+      )
+    },
   }))
 
   interface TopicIdState {

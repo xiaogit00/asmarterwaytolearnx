@@ -142,20 +142,27 @@ const deleteQuestion = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 
 const updateQuestion = async (req: NextApiRequest, res: NextApiResponse) => { 
-    const { topicId, exerciseId } = req.query
+    const { topicId, exerciseId, questionId } = req.query
     const topicData = await Topic.find({_id: topicId})
     const exercise = topicData[0].exercises.find((exercise: Exercise) => exercise._id == exerciseId)
 
     if (env === "development" || env === "production") {
         const isUser = await authenticate(req, String(topicId))
         if (isUser) {
+            // console.log("req.body",req.body)
             const newQuestion: Question = toExistingQuestion(req.body)
+            // console.log("newQuestion:", newQuestion)
+            // console.log("exercise:", exercise)
+            const questionList = produce(exercise.questions, (draft: any) => {
+                // console.log(question._id)
+                const questionIndex = exercise.questions.findIndex((question: any) => question._id.toString() === questionId)
+                // console.log('questionIndex', questionIndex)
+                draft[questionIndex] = newQuestion
+            })
+            console.log("questionList", questionList)
             const newExerciseData = {
-                ...exercise[0].toObject(), 
-                questions: [
-                    ...exercise.questions,
-                    newQuestion
-                ]
+                ...exercise.toObject(), 
+                questions: questionList
             }
             const newTopic: TopicType = {
                 ...topicData[0].toObject(),
@@ -163,8 +170,8 @@ const updateQuestion = async (req: NextApiRequest, res: NextApiResponse) => {
             }
 
             await Topic.findOneAndUpdate({_id: topicId}, newTopic)
-            console.log(`Question ${newQuestion._id} successfully updated`)
-            res.status(204).json(newQuestion)
+            console.log(`Question ${questionId} successfully updated`)
+            res.status(200).json(newQuestion)
         } else {
             res.status(401).send("You are not authorized.")
         }

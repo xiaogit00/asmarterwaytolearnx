@@ -3,6 +3,10 @@ import { Question } from '../types/topics'
 import { CaretRightOutlined } from '@ant-design/icons';
 import { EditFilled } from '@ant-design/icons';
 import { useState } from 'react';
+import { NewQuestion } from '../types/topics';
+import { updateQuestion } from '../services/questionService';
+import { useRouter } from 'next/router'
+import { useTopicStore } from '../store';
 
 const { Panel } = Collapse;
 const { Option } = Select;
@@ -10,7 +14,16 @@ const { Option } = Select;
 type ExpandIconPosition = 'start' | 'end';
 
 const QuestionList = ({ questions }: { questions: Question[]}) => {
-    const [expandIconPosition, setExpandIconPosition] = useState<ExpandIconPosition>('start');
+    const router = useRouter()
+    const updateQuestionToStore = useTopicStore(state => state.updateQuestion)
+    const { topicId, exerciseId } = router.query
+    const [expandIconPosition, setExpandIconPosition] = useState<ExpandIconPosition>('start')
+    const [activeQuestionId, setActiveQuestionId] = useState<null | string>(null)
+    // const [questionInput, setQuestionInput] = useState<string>('')
+    // const [answerInput, setAnswerInput] = useState<string>('')
+    // const [codeInput, setCodeInput] = useState<string>('')
+    const [formInputs, setFormInputs] = useState<NewQuestion>({question: '', answer: '', code: ''})
+
     const onChange = (key: string | string[]) => {
         console.log(key);
       };
@@ -24,11 +37,30 @@ const QuestionList = ({ questions }: { questions: Question[]}) => {
     border: 'none',
     }
 
-    const genExtra = () => (
+    const saveHandler = async () => {
+        const newQuestion: NewQuestion = formInputs
+        const res = await updateQuestion(String(topicId), String(exerciseId), String(activeQuestionId), newQuestion)
+        // console.log(res?.status)
+        if (res?.status === 200) {
+            console.log("Successfully updated the following item into backend:", res.data)
+            updateQuestionToStore(String(topicId), String(exerciseId), String(activeQuestionId), res.data)
+            setActiveQuestionId(null)
+        } else {
+            console.log("Didn't manage to update question")
+            setActiveQuestionId(null)
+        }
+    }
+
+    const cancelHandler = () => {
+        setActiveQuestionId(null)
+    }
+
+    const genExtra = (questionId: string) => (
         <EditFilled
           onClick={(event) => {
             // If you don't want click extra trigger collapse, you can prevent this:
             event.stopPropagation();
+            setActiveQuestionId(questionId)
           }}
         />
       );
@@ -44,8 +76,24 @@ const QuestionList = ({ questions }: { questions: Question[]}) => {
                 style={{ background: token.colorBgContainer }}
             >
                 {questions.map(question => {
+                    if (activeQuestionId && activeQuestionId === question._id) {
+                        return(
+                            <div className='p-2 border-slate-100 border-2 rounded-md my-2' key={question._id}>
+                                <p className='text-lg my-2'>Question: </p>
+                                <Input name='question' defaultValue={question.question} onChange={(e: any) => setFormInputs({...question, question: e.target.value })}/>
+                                <p className='text-lg my-2'>Code: </p>
+                                <Input name='code' defaultValue={question.code}  onChange={(e: any) => setFormInputs({...question, code: e.target.value })}/>
+                                <p className='text-lg my-2'>Answer: </p>
+                                <Input name='answer' defaultValue={question.answer}  onChange={(e: any) => setFormInputs({...question, answer: e.target.value })}/>
+                                <div className='flex gap-2 w-64 ml-auto mr-0 my-4'>
+                                    <Button text="Save" handler={saveHandler}/>
+                                    <Button text="Cancel" handler={cancelHandler}/>
+                                </div>
+                            </div>
+                        )
+                    }
                     return (
-                        <Panel header={question.question} key={question._id} style={panelStyle} extra={genExtra()}>
+                        <Panel header={question.question} key={question._id} style={panelStyle} extra={genExtra(question._id)}>
                             <p>Answer: {question.answer}</p>
                             <p>code: {question.code}</p>
                         </Panel>
@@ -57,3 +105,10 @@ const QuestionList = ({ questions }: { questions: Question[]}) => {
 }
 
 export default QuestionList
+interface InputProps {
+    name: string,
+    defaultValue: any,
+    onChange: any
+}
+const Input = ({ name, defaultValue, onChange }: InputProps) => <input defaultValue={defaultValue} name={name} onChange={onChange} className={'bg-gray-5 border w-full border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'}/>
+const Button = ({ text, handler }: {text: string, handler: any}) => <button onClick={handler} className="py-2 px-5 w-full text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-3xl border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-1 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" >{text}</button>
