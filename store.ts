@@ -24,7 +24,7 @@ interface TopicState {
 const useTopicStore = create<TopicState>((set) => ({
     topics: [],
     fetchTopics: async () => {
-      const res = await fetch(process.env.NEXT_PUBLIC_API_URL+'/topics')
+      const res = await fetch(window.location.origin+'/api/topics')
       if (res.status === 200) {
         set({ topics: await res.json()})
       }
