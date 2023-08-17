@@ -37,7 +37,6 @@ const useTopicStore = create<TopicState>((set) => ({
             _id: topicData._id,
             userId: topicData.userId,
             name: topicData.name,
-            slug: topicData.slug,
             exercises: topicData.exercises
           })
         })
@@ -65,7 +64,6 @@ const useTopicStore = create<TopicState>((set) => ({
           console.log("exerciseData", exerciseData)
           topic.exercises.push({
             _id: exerciseData._id,
-            slug: exerciseData.slug,
             name: exerciseData.name,
             questions: exerciseData.questions
           })
@@ -131,21 +129,9 @@ const useTopicStore = create<TopicState>((set) => ({
     setTopicId: (topicId: string) => void
   }
 
- const useTopicSlugStore = create<TopicIdState>()(
-    persist(
-      (set, get) => ({
-        topicId: '',
-        setTopicId: (topicId: string) => set({ topicId: topicId }),
-      }),
-      {
-        name: 'selectedTopicSlug', // name of item in the storage (must be unique)
-        storage: createJSONStorage(() => sessionStorage) // (optional) by default the 'localStorage' is used
-      }
-    )
-  )
 
 
   
 
 
-  export { useTopicStore, useTopicSlugStore }
+  export { useTopicStore }
