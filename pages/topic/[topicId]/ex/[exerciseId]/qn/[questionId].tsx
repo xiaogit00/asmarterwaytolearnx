@@ -17,7 +17,7 @@ const Question = () => {
     const [ correct, setCorrect ] = useState< null | boolean >(null)
     const [ numCorrect, setNumCorrect ] = useState<number>(0)
     const [api, contextHolder] = notification.useNotification();
-    let lastQuestion: Boolean
+    let lastQuestion: boolean
     let maxQuestions: number
 
 
@@ -54,9 +54,15 @@ const Question = () => {
                 <ProgressBar numOfQns={exerciseQuestions.length} current={questionNumberMinusOne}/>
                 <QuestionText text={exerciseQuestions[questionNumberMinusOne].question}/>
 
-                <SyntaxHighlighter language="javascript" style={atomOneDark}>
-                    {exerciseQuestions[questionNumberMinusOne].code}
-                </SyntaxHighlighter>
+                {exerciseQuestions[questionNumberMinusOne].code 
+                ? (
+                  <SyntaxHighlighter language="javascript" style={atomOneDark}>
+                    {String(exerciseQuestions[questionNumberMinusOne].code)}
+                  </SyntaxHighlighter>
+                )
+                : null
+              }
+                
 
                 <AnswerInput 
                 placeholder={'Enter Your Answer'}

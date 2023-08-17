@@ -11,8 +11,10 @@ const ViewQuestions = () => {
     const router = useRouter()
     const { topicId, exerciseId } = router.query
     const topics = useTopicStore(state => state.topics)
-    const topic = topics.filter(topic => topic._id === topicId)[0]
-    const exercise = topic.exercises.filter(exercise => exercise._id === exerciseId)[0]
+    const topic = topics.find(topic => topic._id === topicId)
+    if (!topic) return null
+    const exercise = topic.exercises.find(exercise => exercise._id === exerciseId)
+    if (!exercise) return null
   return (
       <>
         <div className='text-center mb-8'>
