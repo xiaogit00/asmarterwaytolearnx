@@ -3,6 +3,7 @@ import AddQuestionForm from '../../../../../../components/addQuestionPage/AddQue
 import { useRouter } from 'next/router'
 import { useTopicStore } from '../../../../../../store'
 import QuestionList from '../../../../../../components/QuestionList'
+import Navigator from '../../../../../../components/Navigator'
 
 
 
@@ -20,6 +21,7 @@ const ViewQuestions = () => {
         <div className='container mx-auto bg-white rounded-md w-3/4 p-8'>
             <QuestionList questions={exercise.questions}/>
         </div>
+        <Navigator />
       </>
   )
 

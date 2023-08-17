@@ -23,6 +23,13 @@ export const parseString = (text: unknown): string => {
     return text
 }
 
+export const parseCode = (text: unknown): string => {
+    if (typeof text !== 'string') {
+        throw new Error("Incorrect or missing string")
+    }
+    return text
+}
+
 
 export const toNewTopic = (body: any): NewTopic => {
     const newTopic: NewTopic = {
@@ -46,7 +53,7 @@ export const toExercise = (body: any): NewExercise => {
 export const toQuestion = (body: any): NewQuestion => {
     const newQuestion: NewQuestion = {
         question: parseString(body.question),
-        code: body.code,
+        code: parseString(body.code),
         answer: parseString(body.answer)
     }
     return newQuestion
@@ -68,7 +75,7 @@ export const toQuestions = (body: any) : NewQuestion[] => {
     body.map((item: NewQuestion) => {
         const newQuestion = {
             question: parseString(item.question),
-            code: parseString(item.code),
+            code: parseCode(item.code),
             answer: parseString(item.answer)
         }
         newQuestions.push(newQuestion)

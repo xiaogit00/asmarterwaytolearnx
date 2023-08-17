@@ -4,6 +4,7 @@ import EmptyContainer from '../../../components/EmptyContainer'
 import { Topic, Exercise } from '../../../types/topics'
 import { useTopicStore } from '../../../store'
 import { useRouter } from 'next/router'
+import Navigator from '../../../components/Navigator'
 
 
 //This is essentially the topics page, displaying the exercises. 
@@ -23,6 +24,7 @@ const TopicsPage = () => {
                     <h2 className='font-sans text-4xl font-semibold'>{topic.name}</h2>
                 </div>
                 {exercises.length > 0 ? (<ExerciseList exercises={exercises} />) : <EmptyContainer exercise />}
+                <Navigator />
             </>
             
         )

@@ -10,7 +10,7 @@ import Answer from '../../../../../../components/Answer';
 import QuestionText from '../../../../../../components/QuestionText';
 import { RouterQueryString } from '../../../../../../types/router';
 import { useTopicStore } from '../../../../../../store';
-
+import Navigator from '../../../../../../components/Navigator';
 const Question = () => {
 
     const [ answer, setAnswer ] = useState<string>('')
@@ -85,6 +85,7 @@ const Question = () => {
                 
                 : null}
             </div>
+            <Navigator />
         </>
             
     )

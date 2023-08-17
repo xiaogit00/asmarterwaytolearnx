@@ -3,19 +3,18 @@ const csv=require('csvtojson')
 import { addBulkQuestions } from '../../services/questionService'
 import { Question, Exercise } from '../../types/topics'
 import { UploadOutlined } from '@ant-design/icons';
-import { Button, message, Upload } from 'antd';
+import { Button, message, Upload, Alert } from 'antd';
 import type { UploadFile } from 'antd/es/upload/interface';
 import { useTopicStore } from '../../store';
 import { useRouter } from 'next/router';
 
-const UploadCSV = () => {
+const UploadCSV = ({ exerciseId }: {exerciseId: string}) => {
     const [fileList, setFileList] = useState<any>([]);
     const [uploading, setUploading] = useState(false);
     const router = useRouter()
     const topicId = router.query.topicId as string
-    const exerciseId = router.query.exerciseId as string
 
-    const bulkAddQuestions = useTopicStore(state => state.bulkAddQuestions)
+    const bulkAddQuestionsToStore = useTopicStore(state => state.bulkAddQuestions)
     
     const fileReader = new FileReader();
 
@@ -44,15 +43,16 @@ const UploadCSV = () => {
                     .fromString(csvOutput)
                     .then((questions: Question[]) => {
                         setUploading(true)
-                        console.log(questions)
                         addBulkQuestions(topicId, exerciseId, questions)
-                        bulkAddQuestions(topicId, exerciseId, questions)
+                        bulkAddQuestionsToStore(topicId, exerciseId, questions)
 
                     })
                     .then(() => setFileList([]))
                     .finally(() => {
                         setUploading(false)
+                        alert("Upload success!")
                     })
+                    
             };
 
             fileReader.readAsText(fileList[0]);

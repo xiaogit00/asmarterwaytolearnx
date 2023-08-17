@@ -5,6 +5,7 @@ import TopicList from '../components/topicsPage/TopicList'
 import { useTopicStore } from '../store'
 
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <div className='text-center mb-24'>
         <h2 className='font-sans text-4xl font-semibold'>A Smarter Way to Learn X</h2>
       </div>
+      
       {topics.length > 0 ? (<TopicList/>) : <EmptyContainer topic/>}
     </>
   )

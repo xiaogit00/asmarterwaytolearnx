@@ -7,6 +7,8 @@ import { NewQuestion } from '../types/topics';
 import { updateQuestion } from '../services/questionService';
 import { useRouter } from 'next/router'
 import { useTopicStore } from '../store';
+import { DeleteOutlined } from "@ant-design/icons"
+import { deleteQuestion } from '../services/questionService';
 
 const { Panel } = Collapse;
 const { Option } = Select;
@@ -16,6 +18,7 @@ type ExpandIconPosition = 'start' | 'end';
 const QuestionList = ({ questions }: { questions: Question[]}) => {
     const router = useRouter()
     const updateQuestionToStore = useTopicStore(state => state.updateQuestion)
+    const deleteQuestionFromStore = useTopicStore(state => state.deleteQuestion)
     const { topicId, exerciseId } = router.query
     const [expandIconPosition, setExpandIconPosition] = useState<ExpandIconPosition>('start')
     const [activeQuestionId, setActiveQuestionId] = useState<null | string>(null)
@@ -53,6 +56,17 @@ const QuestionList = ({ questions }: { questions: Question[]}) => {
 
     const cancelHandler = () => {
         setActiveQuestionId(null)
+    }
+
+    const handleDelete = async (questionId: string) => {
+        const res = await deleteQuestion(String(topicId), String(exerciseId), questionId)
+        if (res?.status === 204) {
+            console.log("Successfully deleted the following question:", questionId)
+            deleteQuestionFromStore(String(topicId), String(exerciseId), questionId)
+        } else {
+            console.log("Didn't manage to delete question.")
+        }
+        // deleteTopicFromStore(topicId)
     }
 
     const genExtra = (questionId: string) => (
@@ -96,6 +110,7 @@ const QuestionList = ({ questions }: { questions: Question[]}) => {
                         <Panel header={question.question} key={question._id} style={panelStyle} extra={genExtra(question._id)}>
                             <p>Answer: {question.answer}</p>
                             <p>code: {question.code}</p>
+                            <div><DeleteOutlined onClick={() => handleDelete(question._id) } className='text-lg cursor-pointer mt-4 text-right'/></div>
                         </Panel>
                     )
                 })}

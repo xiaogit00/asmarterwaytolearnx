@@ -14,10 +14,10 @@ const addQuestion = async (topicId: string, exerciseId: string, question: Questi
     }
 }
 
-const addBulkQuestions = async (topicId: string, exerciseSlug: string, questions: Question []) => {
+const addBulkQuestions = async (topicId: string, exerciseId: string, questions: Question []) => {
     //Makes a call to api/topics/[topicId]/exercise/[exerciseId]
 
-    const endpoint = `${baseUrl}/topics/${topicId}/exercise/${exerciseSlug}/bulkAdd`
+    const endpoint = `${baseUrl}/topics/${topicId}/exercise/${exerciseId}/bulkAdd`
 
     try {
         const res = await axios.post(endpoint, questions)
@@ -37,11 +37,22 @@ const updateQuestion = async (topicId: string, exerciseId: string, questionId: s
     } catch (e) {
         console.log(e)
     }
+}
 
+const deleteQuestion = async (topicId: string, exerciseId: string, questionId: string) => {
+    const endpoint = `${baseUrl}/topics/${topicId}/exercise/${exerciseId}/${questionId}`
+
+    try {
+        const res = await axios.delete(endpoint)
+        return res
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 export {
     addBulkQuestions,
     addQuestion,
-    updateQuestion
+    updateQuestion,
+    deleteQuestion
 }

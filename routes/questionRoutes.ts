@@ -70,7 +70,6 @@ const bulkAdd = async (req: NextApiRequest, res: NextApiResponse) => {
         if (isUser) {
             // Receives JSON object with an array of questions
             const newQuestions: NewQuestion[] = toQuestions(req.body)
-            // console.log(exercise)
             const newExerciseData: Exercise = {
                 ...exercise.toObject(), 
                 questions: newQuestions

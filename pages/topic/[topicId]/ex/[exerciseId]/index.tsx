@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import ExerciseLandingPage from '../../../../../components/ExerciseLanding'
 import { Exercise as ExerciseType, Topic } from '../../../../../types/topics'
 import { useTopicStore } from '../../../../../store'
+import Navigator from '../../../../../components/Navigator'
 
 
 const ExercisePage = () => {
@@ -18,6 +19,7 @@ const ExercisePage = () => {
           <h2 className='font-sans text-4xl font-semibold'>{topic.name}</h2>
       </div>
       <ExerciseLandingPage exercise={exercise}/>
+      <Navigator />
     </>
 )
 
