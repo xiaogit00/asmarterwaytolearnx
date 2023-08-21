@@ -12,11 +12,11 @@ const authOptions: NextAuthOptions = {
         EmailProvider({
             server: process.env.EMAIL_SERVER,
             from: process.env.EMAIL_FROM,
-          }),
-          GoogleProvider({
-            clientId: process.env.GOOGLE_ID,
-            clientSecret: process.env.GOOGLE_SECRET,
           })
+          // GoogleProvider({
+          //   clientId: process.env.GOOGLE_ID,
+          //   clientSecret: process.env.GOOGLE_SECRET,
+          // })
     ],
     adapter: MongoDBAdapter(clientPromise, {
       databaseName: process.env.NODE_ENV === "production" ? 'asmarterwaytolearnx' : 'asmarterwaytolearnx_test'
