@@ -17,6 +17,11 @@ const AddQuestionForm = () => {
             router.push({
                 pathname: `/topic/${topicId}/ex/${exerciseId}`,
             })
+        } else {
+            alert("There's an error adding question.")
+            router.push({
+                pathname: `/topic/${topicId}/ex/${exerciseId}`,
+            })
         }
         
       };

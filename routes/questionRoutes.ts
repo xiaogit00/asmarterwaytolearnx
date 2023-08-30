@@ -31,7 +31,6 @@ const getAllQuestions = async (req: NextApiRequest, res: NextApiResponse) => {
 const postSingleQuestion = async (req: NextApiRequest, res: NextApiResponse) => { 
     const { topicId, exerciseId } = req.query
     let topicData = await Topic.findOne({_id: topicId})
-    console.log(topicData)
     // console.log("topicData", topicData)
     // const exercises = topicData[0].exercises
     // const exercise = topicData[0].exercises.filter((exercise: Exercise) => exercise._id == exerciseId)
@@ -42,7 +41,6 @@ const postSingleQuestion = async (req: NextApiRequest, res: NextApiResponse) => 
             const newQuestion: NewQuestion = toQuestion(req.body)
             const exerciseIndex = topicData.exercises.findIndex((exercise: Exercise) => exercise._id == exerciseId)
             topicData.exercises[exerciseIndex].questions.push(newQuestion)
-
             await Topic.findOneAndUpdate({_id: topicId}, topicData)
             console.log(`New question successfully added`)
             res.status(200).json(newQuestion)

@@ -53,7 +53,7 @@ export const toExercise = (body: any): NewExercise => {
 export const toQuestion = (body: any): NewQuestion => {
     const newQuestion: NewQuestion = {
         question: parseString(body.question),
-        code: parseString(body.code),
+        code: body.code,
         answer: parseString(body.answer)
     }
     return newQuestion
