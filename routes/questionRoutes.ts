@@ -31,22 +31,40 @@ const getAllQuestions = async (req: NextApiRequest, res: NextApiResponse) => {
 const postSingleQuestion = async (req: NextApiRequest, res: NextApiResponse) => { 
     const { topicId, exerciseId } = req.query
     let topicData = await Topic.findOne({_id: topicId})
-    // console.log("topicData", topicData)
-    // const exercises = topicData[0].exercises
-    // const exercise = topicData[0].exercises.filter((exercise: Exercise) => exercise._id == exerciseId)
+    const exercise = topicData.exercises.find((exercise: Exercise) => exercise._id == exerciseId)
 
     if (env === "development" || env === "production") {
         const isUser = await authenticate(req, String(topicId))
-        if (isUser) {
-            const newQuestion: NewQuestion = toQuestion(req.body)
-            const exerciseIndex = topicData.exercises.findIndex((exercise: Exercise) => exercise._id == exerciseId)
-            topicData.exercises[exerciseIndex].questions.push(newQuestion)
-            await Topic.findOneAndUpdate({_id: topicId}, topicData)
-            console.log(`New question successfully added`)
-            res.status(200).json(newQuestion)
-        } else {
-            res.status(401).send("You are not authorized.")
+        if (!isUser) res.status(401).send("You are not authorized.")
+
+        const newQuestion: NewQuestion = toQuestion(req.body)
+        if (!newQuestion) res.status(401).send("Error in req body.")
+        
+        const exerciseIndex = topicData.exercises.findIndex((exercise: Exercise) => exercise._id == exerciseId)
+        //Create a new questionList containing all the questions for this exercise. 
+        const questionList = produce(exercise.questions, (draft: any) => {
+            draft.push(newQuestion)
+        })
+
+        const newExerciseData = {
+            ...exercise.toObject(), 
+            questions: questionList
         }
+
+        const exerciseList = produce(topicData.exercises, (draft: any) => {
+            draft[exerciseIndex] = newExerciseData
+        })
+        
+        
+        const newTopic: TopicType = {
+            ...topicData.toObject(),
+            exercises: exerciseList
+        }
+
+        await Topic.findOneAndUpdate({_id: topicId}, newTopic)
+        console.log(`New question successfully added`)
+        res.status(200).json(newQuestion)
+
     } else if (env === "test") {
         const newQuestion: NewQuestion = toQuestion(req.body)
         const exerciseIndex = topicData.exercises.findIndex((exercise: Exercise) => exercise._id == exerciseId)
@@ -140,38 +158,41 @@ const deleteQuestion = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const updateQuestion = async (req: NextApiRequest, res: NextApiResponse) => { 
     const { topicId, exerciseId, questionId } = req.query
-    const topicData = await Topic.find({_id: topicId})
-    const exercise = topicData[0].exercises.find((exercise: Exercise) => exercise._id == exerciseId)
+    const topicData = await Topic.findOne({_id: topicId})
+    const exercise = topicData.exercises.find((exercise: Exercise) => exercise._id == exerciseId)
 
     if (env === "development" || env === "production") {
         const isUser = await authenticate(req, String(topicId))
-        if (isUser) {
-            // console.log("req.body",req.body)
-            const newQuestion: Question = toExistingQuestion(req.body)
-            // console.log("newQuestion:", newQuestion)
-            // console.log("exercise:", exercise)
-            const questionList = produce(exercise.questions, (draft: any) => {
-                // console.log(question._id)
-                const questionIndex = exercise.questions.findIndex((question: any) => question._id.toString() === questionId)
-                // console.log('questionIndex', questionIndex)
-                draft[questionIndex] = newQuestion
-            })
-            console.log("questionList", questionList)
-            const newExerciseData = {
-                ...exercise.toObject(), 
-                questions: questionList
-            }
-            const newTopic: TopicType = {
-                ...topicData[0].toObject(),
-                exercises: newExerciseData
-            }
+        if (!isUser) res.status(401).send("You are not authorized.")
+        
+        const newQuestion: Question = toExistingQuestion(req.body)
+        if (!newQuestion) res.status(401).send("Error in req body.")
+        
+        console.log("newQuestion", newQuestion)
+        const exerciseIndex = topicData.exercises.findIndex((exercise: Exercise) => exercise._id == exerciseId)
 
-            await Topic.findOneAndUpdate({_id: topicId}, newTopic)
-            console.log(`Question ${questionId} successfully updated`)
-            res.status(200).json(newQuestion)
-        } else {
-            res.status(401).send("You are not authorized.")
+        const questionList = produce(exercise.questions, (draft: any) => {
+            const questionIndex = exercise.questions.findIndex((question: any) => question._id.toString() === questionId)
+            draft[questionIndex] = newQuestion
+        })
+        console.log("questionList",questionList)
+        const newExerciseData = {
+            ...exercise.toObject(), 
+            questions: questionList
         }
+        const exerciseList = produce(topicData.exercises, (draft: any) => {
+            draft[exerciseIndex] = newExerciseData
+        })
+        
+        const newTopic: TopicType = {
+            ...topicData.toObject(),
+            exercises: exerciseList
+        }
+
+        await Topic.findOneAndUpdate({_id: topicId}, newTopic)
+        console.log(`Question ${questionId} successfully updated`)
+        res.status(200).json(newQuestion)
+
     } else if (env === "test") {
         const newQuestion: Question = toExistingQuestion(req.body)
             const newExerciseData = {

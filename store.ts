@@ -52,7 +52,6 @@ const useTopicStore = create<TopicState>((set) => ({
       set(
         produce((draft) => {
           const topic = draft.topics.find(((topic: Topic) => topic._id === topicId))
-          console.log("topic",topic)
           topic.name = topicName
         })
       ), 
@@ -61,7 +60,6 @@ const useTopicStore = create<TopicState>((set) => ({
         produce((draft) => {
           const topic = draft.topics.find((topic: Topic) => topic._id === topicId)
           
-          console.log("exerciseData", exerciseData)
           topic.exercises.push({
             _id: exerciseData._id,
             name: exerciseData.name,

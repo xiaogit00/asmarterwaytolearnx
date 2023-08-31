@@ -6,7 +6,6 @@ import { useRouter } from "next/router"
 const DeleteButton = ({ exerciseId}: {exerciseId: string}) => {
     const router = useRouter()
     const topicId = router.query.topicId as string
-    console.log("topic and exedrciseId", topicId, exerciseId)
     const deleteExerciseFromStore = useTopicStore(state => state.deleteExercise)
     
     const handleDelete = async (exerciseId: string) => {

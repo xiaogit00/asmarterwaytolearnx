@@ -36,7 +36,6 @@ const UploadCSV = ({ exerciseId }: {exerciseId: string}) => {
     const handleOnSubmit = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault();
         if (fileList.length > 0) {
-            console.log(fileList[0])
             fileReader.onload = function (event: ProgressEvent<FileReader>) {
                 const csvOutput = event.target?.result;
                 csv()

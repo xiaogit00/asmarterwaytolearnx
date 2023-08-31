@@ -12,7 +12,6 @@ const AddTopicModal = ( { setIsModalOpen }: {setIsModalOpen: React.Dispatch<Reac
   const handleInputChange = (e: React.FormEvent<HTMLInputElement>) => {
     const value = (e.target as HTMLInputElement).value
     setNewTopicName(value)
-    console.log(value)
   }
   const {data: session } = useSession()
   

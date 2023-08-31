@@ -9,7 +9,6 @@ const genExtra = () => (
       onClick={(event) => {
         // If you don't want click extra trigger collapse, you can prevent this:
         event.stopPropagation();
-        console.log("This is pressed")
       }}
     />
   );

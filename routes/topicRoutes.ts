@@ -52,7 +52,6 @@ const deleteTopic = async (topicId: string, req: NextApiRequest, res: NextApiRes
     if (env === "development" || env === "production") {
         const isUser = await authenticate(req, topicId)
         if (isUser) {
-            console.log("topicId",topicId)
             await Topic.deleteOne({_id: topicId})
             console.log(`Topic: ${topicId} successfully deleted`)
             res.status(204).end()

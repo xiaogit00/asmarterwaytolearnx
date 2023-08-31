@@ -9,7 +9,6 @@ export default async function questionHandler(req: NextApiRequest, res: NextApiR
     await mongooseConnect()
     
     const { exerciseId } = req.query
-    console.log("exerciseId within router", exerciseId)
 
     switch (req.method) {
         case "GET": 

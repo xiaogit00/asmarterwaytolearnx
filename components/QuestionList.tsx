@@ -25,7 +25,7 @@ const QuestionList = ({ questions }: { questions: Question[]}) => {
     // const [questionInput, setQuestionInput] = useState<string>('')
     // const [answerInput, setAnswerInput] = useState<string>('')
     // const [codeInput, setCodeInput] = useState<string>('')
-    const [formInputs, setFormInputs] = useState<NewQuestion>({question: '', answer: '', code: ''})
+    const [selectedQuestion, setSelectedQuestion] = useState<Question>({question: '', answer: '', code: '', _id: ''})
 
     const onChange = (key: string | string[]) => {
         console.log(key);
@@ -41,8 +41,8 @@ const QuestionList = ({ questions }: { questions: Question[]}) => {
     }
 
     const saveHandler = async () => {
-        const newQuestion: NewQuestion = formInputs
-        const res = await updateQuestion(String(topicId), String(exerciseId), String(activeQuestionId), newQuestion)
+        const updatedQuestion: Question = selectedQuestion
+        const res = await updateQuestion(String(topicId), String(exerciseId), String(activeQuestionId), updatedQuestion)
         // console.log(res?.status)
         if (res?.status === 200) {
             console.log("Successfully updated the following item into backend:", res.data)
@@ -69,12 +69,13 @@ const QuestionList = ({ questions }: { questions: Question[]}) => {
         // deleteTopicFromStore(topicId)
     }
 
-    const genExtra = (questionId: string) => (
+    const genExtra = (question: Question) => (
         <EditFilled
           onClick={(event) => {
             // If you don't want click extra trigger collapse, you can prevent this:
             event.stopPropagation();
-            setActiveQuestionId(questionId)
+            setActiveQuestionId(question._id)
+            setSelectedQuestion(question)
           }}
         />
       );
@@ -94,11 +95,11 @@ const QuestionList = ({ questions }: { questions: Question[]}) => {
                         return(
                             <div className='p-2 border-slate-100 border-2 rounded-md my-2' key={question._id}>
                                 <p className='text-lg my-2'>Question: </p>
-                                <Input name='question' defaultValue={question.question} onChange={(e: any) => setFormInputs({...question, question: e.target.value })}/>
+                                <Input name='question' defaultValue={question.question} onChange={(e: any) => setSelectedQuestion({...selectedQuestion, question: e.target.value })}/>
                                 <p className='text-lg my-2'>Code: </p>
-                                <Input name='code' defaultValue={question.code}  onChange={(e: any) => setFormInputs({...question, code: e.target.value })}/>
+                                <Input name='code' defaultValue={question.code}  onChange={(e: any) => setSelectedQuestion({...selectedQuestion, code: e.target.value })}/>
                                 <p className='text-lg my-2'>Answer: </p>
-                                <Input name='answer' defaultValue={question.answer}  onChange={(e: any) => setFormInputs({...question, answer: e.target.value })}/>
+                                <Input name='answer' defaultValue={question.answer}  onChange={(e: any) => setSelectedQuestion({...selectedQuestion, answer: e.target.value })}/>
                                 <div className='flex gap-2 w-64 ml-auto mr-0 my-4'>
                                     <Button text="Save" handler={saveHandler}/>
                                     <Button text="Cancel" handler={cancelHandler}/>
@@ -107,7 +108,7 @@ const QuestionList = ({ questions }: { questions: Question[]}) => {
                         )
                     }
                     return (
-                        <Panel header={question.question} key={question._id} style={panelStyle} extra={genExtra(question._id)}>
+                        <Panel header={question.question} key={question._id} style={panelStyle} extra={genExtra(question)}>
                             <p>Answer: {question.answer}</p>
                             <p>code: {question.code}</p>
                             <div><DeleteOutlined onClick={() => handleDelete(question._id) } className='text-lg cursor-pointer mt-4 text-right'/></div>

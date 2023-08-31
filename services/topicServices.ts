@@ -7,7 +7,6 @@ const baseUrl = process.env.NODE_ENV === 'production' ? `https://asmarterwaytole
 const getAllTopics = async () => {
     try {
         const res = await axios.get(baseUrl + '/topics')
-        console.log(res.data)
         return res.data
     } catch (err) {
         console.log(err)

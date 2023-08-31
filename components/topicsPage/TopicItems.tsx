@@ -7,8 +7,6 @@ import { Topic } from "../../types/topics"
 
 const TopicItems = (): JSX.Element | null => {
     const topics = useTopicStore(state => state.topics)
-    console.log("topics within topicItems:", topics)
-    // const [ activeTopicName, setActiveTopicName ] = useState<string>('')
     const [ activatedTopicId, setActivatedTopicId ] = useState<null | string>(null)
 
     //Renders each row of topics 

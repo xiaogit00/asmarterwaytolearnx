@@ -18,7 +18,6 @@ const AddExerciseModal = ( { setIsModalOpen }: {setIsModalOpen: React.Dispatch<R
   const handleSubmit = async (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault
     const res = await addExercise(topicId as string, newExerciseName)
-    console.log("res:", res)
     addExerciseToStore(topicId as string, res)
     setNewExerciseName('')
     setIsModalOpen(false)

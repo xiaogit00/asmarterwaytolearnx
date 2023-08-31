@@ -30,7 +30,6 @@ const addBulkQuestions = async (topicId: string, exerciseId: string, questions: 
 
 const updateQuestion = async (topicId: string, exerciseId: string, questionId: string, question: NewQuestion ) => {
     const endpoint = `${baseUrl}/topics/${topicId}/exercise/${exerciseId}/${questionId}`
-    console.log("question:", question)
     try{
         const res = await axios.put(endpoint, question)
         return res

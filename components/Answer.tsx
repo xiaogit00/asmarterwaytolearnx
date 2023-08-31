@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const Answer = ( {text, exerciseId, topicId, questionNumber, setCorrect, setAnswer, maxQuestions, numCorrect, lastQuestion}: AnswerProps ) => {
-  console.log("State of lastQuestion in Answer:", lastQuestion)
   const router = useRouter()
   const handleClick = () => {
     setCorrect(true)
