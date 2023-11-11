@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <div className='text-center mb-24'>
-        <h2 className='font-sans text-4xl font-semibold'>A Smarter Way to Learn X</h2>
+        <h2 className='font-sans text-4xl font-semibold'>Powercards - make it stick.</h2>
       </div>
       
       {topics.length > 0 ? (<TopicList/>) : <EmptyContainer topic/>}
